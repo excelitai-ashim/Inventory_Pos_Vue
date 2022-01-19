@@ -3,9 +3,13 @@
  let register= require('../components/auth/register.vue').default;
  let forgetPas= require('../components/auth/forgetPas.vue').default;
  let logout= require('../components/auth/logout.vue').default;
-
-
+//
  let home= require('../components/home.vue').default;
+//
+ let addEmployee= require('../components/employee/addEmployee.vue').default;
+ let vewAllEmployee= require('../components/employee/vewAllEmployee.vue').default;
+
+
 
 
 
@@ -15,10 +19,11 @@ export const routes = [
     { path: '/register', component:register,name:'register' },
     { path: '/forgetPas', component:forgetPas,name:'forgetPas' },
     { path: '/logout', component:logout,name:'logout' },
-
-
-
+     //
     { path: '/home', component:home,name:'home' },
+     //
+    { path: '/addEmployee', component:addEmployee,name:'addEmployee' },
+    { path: '/vewAllEmployee', component:vewAllEmployee,name:'vewAllEmployee' },
 
 
 

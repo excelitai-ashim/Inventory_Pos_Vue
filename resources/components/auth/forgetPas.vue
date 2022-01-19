@@ -7,7 +7,7 @@
         <form>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+              <input type="email" id="inputEmail" v-model="form.email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
               <label for="inputEmail">Existing email address</label>
             </div>
           </div>
@@ -27,7 +27,27 @@
 </template>
 
 <script type="text/javascript">
+export default{
+mounted(){
+  if(User.loggedin()){
+    this.$router.push({name:'home'})
 
+  }
+
+},
+
+data()
+{
+    return{
+        form:{
+            email:null,
+        },
+     errors:{}
+        
+    }
+},
+
+}
 </script>
 
 <style type="text/css">

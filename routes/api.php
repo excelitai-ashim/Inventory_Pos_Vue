@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\api\EmployeeController;
+
 
 
 Route::group([
@@ -19,3 +21,6 @@ Route::group([
     Route::post('me', [AuthController::class,'me']);
 
 });
+
+// Employee Resource Route
+ Route::apiResource('/employee',EmployeeController::class);

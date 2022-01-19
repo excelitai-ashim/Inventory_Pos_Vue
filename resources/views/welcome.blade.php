@@ -29,7 +29,8 @@
 
     <div id="app">
 
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top" style="display: none;" id="topBar">
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top" style="display: none;" 
+  id="topBar" v-show="$route.path === '/' || $route.path === '/register' || $route.path === '/forgetPas' ? false : true  ">
 
     <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
 
@@ -94,29 +95,39 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="sidebar navbar-nav" style="display: none;" id="sidebar">
+    <ul class="sidebar navbar-nav" style="display: none;" id="sidebar"
+    v-show="$route.path === '/' || $route.path === '/register' || $route.path === '/forgetPas' ? false : true  ">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+
+        <router-link class="nav-link" to="home">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
-        </a>
+        </router-link>
+
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Employee</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <a class="dropdown-item" href="login.html">Login</a>
-          <a class="dropdown-item" href="register.html">Register</a>
-          <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Other Pages:</h6>
-          <a class="dropdown-item" href="404.html">404 Page</a>
-          <a class="dropdown-item" href="blank.html">Blank Page</a>
+          <router-link class="dropdown-item" to="addEmployee">Add Employee</router-link>
+          <router-link class="dropdown-item" to="vewAllEmployee" >All Employee</router-link>
+         
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Suppliers</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <router-link class="dropdown-item" to="#">Add Suppliers</router-link>
+          <router-link class="dropdown-item" to="#" >All Suppliers</router-link>
+         
+        </div>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
@@ -172,8 +183,8 @@
 
 
   if(token){
-  $(#topBar).css("display","");
-  $(#sidebar).css("display","");
+  $("#topBar").css("display","");
+  $("#sidebar").css("display","");
 
   }
 
