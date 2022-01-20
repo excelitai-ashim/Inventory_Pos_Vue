@@ -2590,6 +2590,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
@@ -2597,6 +2645,24 @@ __webpack_require__.r(__webpack_exports__);
         name: '/'
       });
     }
+  },
+  date: function date() {
+    return {
+      employees: {}
+    };
+  },
+  methods: {
+    allEmployes: function allEmployes() {
+      var _this = this;
+
+      axios.get('/api/employee/').then(function (_ref) {
+        var date = _ref.date;
+        return _this.employees = date;
+      })["catch"]();
+    }
+  },
+  created: function created() {
+    this.allEmployes();
   }
 });
 
@@ -28968,7 +29034,44 @@ var render = function () {
           1
         ),
         _vm._v(" "),
-        _vm._m(1),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _c(
+                "table",
+                {
+                  staticClass: "table table-bordered",
+                  attrs: { id: "dataTable", width: "100%", cellspacing: "0" },
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.employees, function (employee) {
+                      return _c("tr", { key: employee.id }, [
+                        _c("td", [_vm._v(_vm._s(employee.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("System Architect")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(employee.phone))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(employee.salary))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(employee.joining_date))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("$320,800")]),
+                      ])
+                    }),
+                    0
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-footer small text-muted" }, [
           _vm._v("Updated yesterday at 11:59 PM"),
@@ -28996,8 +29099,40 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("h1", [_vm._v("vue All Employee")]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Photo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Phone")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Salary")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Joining Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Acction")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tfoot", [
+      _c("tr", [
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Photo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Phone")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Salary")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Joining Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Acction")]),
+      ]),
     ])
   },
 ]

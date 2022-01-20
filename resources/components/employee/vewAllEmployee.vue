@@ -16,7 +16,55 @@
             <router-link to="/addEmployee" class="btn btn-sm btn-info" id="add_new"> Add Employee</router-link>
           </div>
           <div class="card-body">
-          	  <h1>vue All Employee</h1>
+
+                          <!-- ######################################################################### -->
+
+
+
+          	  <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Photo</th>
+                    <th>Phone</th>
+                    <th>Salary</th>
+                    <th>Joining Date</th>
+                     <th>Acction</th>
+
+
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Name</th>
+                    <th>Photo</th>
+                    <th>Phone</th>
+                    <th>Salary</th>
+                    <th>Joining Date</th>
+                     <th>Acction</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <tr v-for="employee in employees" :key="employee.id">
+                    <td>{{employee.name}}</td>
+                    <td>System Architect</td>
+                    <td>{{employee.phone}}</td>
+                    <td>{{employee.salary}}</td>
+                    <td>{{employee.joining_date}}</td>
+                    <td>$320,800</td>
+                   
+                  </tr>
+            
+              
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+                       <!-- ######################################################################### -->
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
          </div>
@@ -31,7 +79,22 @@
                this.$router.push({ name:'/' })
             } 
         },
-       
+       date(){
+         return{
+           employees:{}
+         }
+       },
+       methods:{
+         allEmployes(){
+           axios.get('/api/employee/')
+           .then(({date})=>(this.employees = date))
+           .catch()
+
+         }
+       },
+       created(){
+         this.allEmployes();
+       }
       
     }
   
