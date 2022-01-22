@@ -112,7 +112,9 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee=Employee::find($id);
+
+        return response()->json($employee);
     }
 
     /**
@@ -121,9 +123,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
-        //
+        dd($request);
+        
     }
 
     /**
@@ -146,6 +149,18 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+            $employee=Employee::find($id);
+            $photo=$employee->photo;
+            
+            if($photo){
+                unlink($photo);
+                Employee::find($id)->delete();
+
+            }else{
+                Employee::find($id)->delete();
+
+            }
+
     }
+
 }

@@ -4,6 +4,7 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
            <router-link to="/home"  id="home"> Dashboard</router-link>
+
           </li>
           <li class="breadcrumb-item active">Employee</li>
         </ol>
@@ -13,11 +14,11 @@
          <div class="card col-lg-12">
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
-            Employee Insert 
+            Employee Update 
             <router-link to="/vewAllEmployee" class="btn btn-sm btn-info" id="add_new"> All Employee</router-link>
           </div>
           <div class="card-body">
-          	  <form @submit.prevent="employeeInsert" enctype="multipart/form-data">
+          	  <form @submit.prevent="employeeUpdate" enctype="multipart/form-data">
                 <div class="form-group">
 	              <div class="form-row">
 	               <div class="col-md-6">
@@ -96,7 +97,7 @@
 	             </div>
 	          </div>
 
-               <button type="submit" class="btn btn-success">Submit</button>
+               <button type="submit" class="btn btn-success">Update</button>
               </form>
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
@@ -130,7 +131,16 @@
         		errors:{},
         	}
         },
-        
+        	mounted(){
+			                    
+                   
+                let id=this.$route.params.id
+             
+                  axios.get('/api/employee/'+id)
+                 .then(({data})=>(this.form = data))
+                 .catch(console.log('error'))
+		
+        },
         methods:{ 	
         	onFileselected(event){
         		let file=event.target.files[0];
@@ -145,8 +155,10 @@
         			reader.readAsDataURL(file);
         		}
         	},
-        	employeeInsert(){
-        		axios.post('/api/employee/',this.form)
+        	employeeUpdate(){
+			let id=this.$route.params.id
+
+        		axios.post('/api/employee/'+id,this.form)
         		.then(() => {
 					Notification.success()
         			this.$router.push({ name: 'vewAllEmployee' })

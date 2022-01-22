@@ -7,7 +7,8 @@
  let home= require('../components/home.vue').default;
 //
  let addEmployee= require('../components/employee/addEmployee.vue').default;
- let vewAllEmployee= require('../components/employee/vewAllEmployee.vue').default;
+ let vewAllEmployee= require('../components/employee/vewAllEmployee.vue').default;               
+ let editEmployee= require('../components/employee/editEmployee.vue').default;
 
 
 
@@ -24,6 +25,8 @@ export const routes = [
      //
     { path: '/addEmployee', component:addEmployee,name:'addEmployee' },
     { path: '/vewAllEmployee', component:vewAllEmployee,name:'vewAllEmployee' },
+    { path: '/editEmployee/:id', component:editEmployee,name:'editEmployee' },
+
 
 
 
