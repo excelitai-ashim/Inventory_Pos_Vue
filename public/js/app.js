@@ -2690,6 +2690,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mounted$data$mounted = {
   mounted: function mounted() {
     // console.log(User);
@@ -2711,6 +2712,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         nid: '',
         joining_date: ''
       },
+      newImage: "",
       errors: {}
     };
   }
@@ -2727,6 +2729,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _this2 = this;
 
     var file = event.target.files[0];
+    this.form.photo = file;
 
     if (file.size > 1048770) {
       Notification.image_validation();
@@ -2734,7 +2737,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var reader = new FileReader();
 
       reader.onload = function (event) {
-        _this2.form.photo = event.target.result;
+        _this2.newImage = event.target.result;
         console.log(event.target.result);
       };
 
@@ -2745,14 +2748,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _this3 = this;
 
     var id = this.$route.params.id;
-    axios.post('/api/employee/' + id, this.form).then(function () {
+    var formData = new FormData();
+
+    for (var i in this.form) {
+      formData.append(i, this.form[i]);
+    }
+
+    axios.post('/api/employee/' + id + '/update', formData).then(function () {
       Notification.success();
 
       _this3.$router.push({
         name: 'vewAllEmployee'
       });
     })["catch"](function (error) {
-      return _this3.errors = error.response.data.errors;
+      console.log(error.response);
+
+      if (error.response.status === 422) {
+        _this3.errors = error.response.data.errors;
+      }
     });
   }
 }), _mounted$data$mounted);
@@ -30599,10 +30612,15 @@ var render = function () {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-6" }, [
-                      _c("img", {
-                        staticStyle: { height: "80px", width: "80px" },
-                        attrs: { src: _vm.form.photo },
-                      }),
+                      _vm.newImage
+                        ? _c("img", {
+                            staticStyle: { height: "80px", width: "80px" },
+                            attrs: { src: _vm.newImage },
+                          })
+                        : _c("img", {
+                            staticStyle: { height: "80px", width: "80px" },
+                            attrs: { src: _vm.form.photo },
+                          }),
                     ]),
                   ]),
                 ]),

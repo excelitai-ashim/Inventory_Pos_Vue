@@ -92,7 +92,8 @@
 	                </div>
 	               </div>
 	                <div class="col-md-6">
-	                	<img :src="form.photo" style="height:80px; width: 80px;">
+	                	<img v-if="newImage" :src="newImage" style="height:80px; width: 80px;">
+	                	<img v-else :src="form.photo" style="height:80px; width: 80px;">
 	                </div>
 	             </div>
 	          </div>
@@ -128,6 +129,7 @@
         			nid : '',
         			joining_date:''
         		},
+				newImage:"",
         		errors:{},
         	}
         },
@@ -144,27 +146,38 @@
         methods:{ 	
         	onFileselected(event){
         		let file=event.target.files[0];
+				this.form.photo=file;
         		if (file.size > 1048770) {
         			Notification.image_validation()
         		}else{
         			let reader = new FileReader();
         			reader.onload = event => {
-        				this.form.photo = event.target.result
+        				this.newImage   = event.target.result
         				console.log(event.target.result);
         			};
         			reader.readAsDataURL(file);
         		}
         	},
         	employeeUpdate(){
-			let id=this.$route.params.id
-
-        		axios.post('/api/employee/'+id,this.form)
+		     	let id=this.$route.params.id;
+				 let formData = new FormData();
+			    for(let i in this.form){
+                    formData.append(i,this.form[i]);
+				}
+          
+        		axios.post('/api/employee/'+id+'/update',formData)
         		.then(() => {
 					Notification.success()
         			this.$router.push({ name: 'vewAllEmployee' })
         			
         		})
-        		.catch(error => this.errors = error.response.data.errors)
+        		.catch(error => {
+					console.log(error.response)
+					if(error.response.status === 422){
+						this.errors = error.response.data.errors;
+					}
+					
+				})
         	},
         	
         },

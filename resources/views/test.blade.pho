@@ -1,89 +1,50 @@
+public function employeeUpdate(Request $request,$id)
+    {
+        $accountInfo = Employee::findOrFail($id);
+        $upload_image = $accountInfo->upload_image;
+        if($request->hasFile('upload_image') && $request->upload_image->isValid()){
+            $file_path = public_path('upload/employee_img/'.$accountInfo->upload_image);
+            if(file_exists($file_path)){
+                unlink($file_path);
+            }
+            $upload_image = time() . '.' . $request->upload_image->extension();
+            $request->upload_image->move(public_path('upload/employee_img'), $upload_image);
+        }
+        $upload_cv = $accountInfo->upload_cv;
+        if($request->hasFile('upload_cv') && $request->upload_cv->isValid()){
+            $file_path = public_path('upload/employee_cv/'.$accountInfo->upload_cv);
+            if(file_exists($file_path)){
+                unlink($file_path);
+            }
+            $upload_cv = Str::random(10).time(). '.' . $request->upload_cv->extension();
+            $request->upload_cv->move(public_path('upload/employee_cv'), $upload_cv);
+        }
+        $accountInfo->update([
+        'employee_name' => $request->employee_name,
+        'employee_id' => $request->employee_id,
+        'designation' => $request->designation,
+        'employee_status' => $request->employee_status,
+        'username' => $request->username,
+        'password' => bcrypt($request->password),
+        'upload_image' => $upload_image,
+        'upload_cv' => $upload_cv,
+        ]);
+        $notification = array(
+            'message' => 'Update sucessfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+white_check_mark
+eyes
+raised_hands
 
-      <div class="container-fluid">
 
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
-          </li>
-          <li class="breadcrumb-item active">Overview</li>
-        </ol>
 
-        <!-- Icon Cards-->
-        <div class="row">
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-comments"></i>
-                </div>
-                <div class="mr-5">26 New Messages!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-warning o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-list"></i>
-                </div>
-                <div class="mr-5">11 New Tasks!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-success o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-shopping-cart"></i>
-                </div>
-                <div class="mr-5">123 New Orders!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-danger o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-life-ring"></i>
-                </div>
-                <div class="mr-5">13 New Tickets!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
 
-        <!-- Area Chart Example-->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-chart-area"></i>
-            Area Chart Example</div>
-          <div class="card-body">
-            <canvas id="myAreaChart" width="100%" height="30"></canvas>
-          </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
+
+
+
+
+
+

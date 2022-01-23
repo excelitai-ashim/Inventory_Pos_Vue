@@ -24,3 +24,4 @@ Route::group([
 
 // Employee Resource Route
  Route::apiResource('/employee',EmployeeController::class);
+Route::post('/employee/{employee}/update',[EmployeeController::class,'update']);
