@@ -11,7 +11,7 @@ use Image;
 
 class EmployeeController extends Controller
 {
-   
+           
             public function index()
             {
                     $employee=EmployeeResource::collection(Employee::all());

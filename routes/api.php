@@ -2,8 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\api\EmployeeController;
+use App\Http\Controllers\AuthController;  
+use App\Http\Controllers\api\SupplierController;
+
 
 
 
@@ -25,3 +26,7 @@ Route::group([
 // Employee Resource Route
  Route::apiResource('/employee',EmployeeController::class);
 Route::post('/employee/{employee}/update',[EmployeeController::class,'update']);
+
+// Supplier Resource Route
+Route::apiResource('/supplier',SupplierController::class);
+Route::post('/supplier/{supplier}/update',[SupplierController::class,'update']);

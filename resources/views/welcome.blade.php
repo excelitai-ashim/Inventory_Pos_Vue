@@ -122,8 +122,8 @@
           <span>Suppliers</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <router-link class="dropdown-item" to="#">Add Suppliers</router-link>
-          <router-link class="dropdown-item" to="#" >All Suppliers</router-link>
+          <router-link class="dropdown-item" to="addSupplier">Add Suppliers</router-link>
+          <router-link class="dropdown-item" to="vewAllSupplier" >All Suppliers</router-link>
          
         </div>
       </li>

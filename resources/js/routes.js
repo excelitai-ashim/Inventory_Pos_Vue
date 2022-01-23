@@ -9,7 +9,10 @@
  let addEmployee= require('../components/employee/addEmployee.vue').default;
  let vewAllEmployee= require('../components/employee/vewAllEmployee.vue').default;               
  let editEmployee= require('../components/employee/editEmployee.vue').default;
-
+//
+let addSupplier= require('../components/supplier/addSupplier.vue').default;
+let vewAllSupplier= require('../components/supplier/vewAllSupplier.vue').default;               
+let editSupplier= require('../components/supplier/editSupplier.vue').default;
 
 
 
@@ -26,7 +29,11 @@ export const routes = [
     { path: '/addEmployee', component:addEmployee,name:'addEmployee' },
     { path: '/vewAllEmployee', component:vewAllEmployee,name:'vewAllEmployee' },
     { path: '/editEmployee/:id', component:editEmployee,name:'editEmployee' },
-
+ 
+    //
+    { path: '/addSupplier', component:addSupplier,name:'addSupplier' },
+    { path: '/vewAllSupplier', component:vewAllSupplier,name:'vewAllSupplier' },
+    { path: '/editSupplier/:id', component:editSupplier,name:'editSupplier' },
 
 
 
