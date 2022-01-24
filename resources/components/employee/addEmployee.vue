@@ -14,7 +14,7 @@
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
             Employee Insert 
-            <router-link to="/vewAllEmployee" class="btn btn-sm btn-info" id="add_new"> All Employee</router-link>
+            <router-link to="/viewAllEmployee" class="btn btn-sm btn-info" id="add_new"> All Employee</router-link>
           </div>
           <div class="card-body">
           	  <form @submit.prevent="employeeInsert" enctype="multipart/form-data">
@@ -149,7 +149,7 @@
         		axios.post('/api/employee/',this.form)
         		.then(() => {
 					Notification.success()
-        			this.$router.push({ name: 'vewAllEmployee' })
+        			this.$router.push({ name: 'viewAllEmployee' })
         			
         		})
         		.catch(error => this.errors = error.response.data.errors)

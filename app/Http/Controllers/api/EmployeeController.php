@@ -59,11 +59,10 @@ class EmployeeController extends Controller
 
                                 Employee::create([   
                                     'name'   => $request->name,
-                                'email'   => $request->email,
+                                    'email'   => $request->email,
                                     'phone'  => $request->phone,
                                     'address'=> $request->address,
                                     'salary' => $request->salary,
-                                    'photo'  => $request->salary,
                                     'nid'   => $request->nid,
                                     'joining_date'   => $request->joining_date,
                                     'photo'  =>  $image_url,
@@ -77,11 +76,10 @@ class EmployeeController extends Controller
                             }else{
                                 Employee::create([   
                                     'name'   => $request->name,
-                                'email'   => $request->email,
+                                    'email'   => $request->email,
                                     'phone'  => $request->phone,
                                     'addsres'=> $request->address,
                                     'salary' => $request->salary,
-                                    'photo'  => $request->salary,
                                     'nid'   => $request->nid,
                             'joining_date'   => $request->joining_date,
                                     'photo'  =>  "No Image !",
@@ -107,17 +105,17 @@ class EmployeeController extends Controller
 
 
                 
-                        $old_image = $employee->photo;
+                        $image = $employee->photo;
                         if($request->hasFile('photo') && $request->photo->isValid()){
-                            if(file_exists(public_path($old_image))){
-                                unlink(public_path($old_image));
+                            if(file_exists(public_path($image))){
+                                unlink(public_path($image));
                             }
                             $ext = $request->photo->getClientOriginalExtension();
                             $image_new_name = time().".". $ext;
                             $img=Image::make($request->photo)->resize(240,200);
                             $image_url="backend/employee/".$image_new_name;
                             $img->save(public_path($image_url));
-                            $new_image =$image_url;
+                            $image =$image_url;
                         }
 
                         Employee::findOrFail($id)->update([
@@ -128,7 +126,7 @@ class EmployeeController extends Controller
                             'salary' => $request->salary,
                             'nid' => $request->nid,
                             'joining_date' => $request->joining_date,
-                            'photo' =>$new_image
+                            'photo' =>$image
                         ]);
             }
 

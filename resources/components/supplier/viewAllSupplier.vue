@@ -3,9 +3,9 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+           <router-link to="/home"  id="home"> Dashboard</router-link>
           </li>
-          <li class="breadcrumb-item active"> All Employee</li>
+          <li class="breadcrumb-item active"> All Suppliers</li>
         </ol>
         <!-- Icon Cards-->
        <div class="container">
@@ -14,7 +14,7 @@
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
             All Employee 
-            <router-link to="/addEmployee" class="btn btn-sm btn-info" id="add_new"> Add Employee</router-link>
+            <router-link to="/addSupplier" class="btn btn-sm btn-info" id="add_new"> Add Supplier</router-link>
           </div>
           <div class="card-body">
 
@@ -30,28 +30,28 @@
                     <th>Name</th>
                     <th>Photo</th>
                     <th>Phone</th>
-                    <th>Salary</th>
-                    <th>Joining Date</th>
-                     <th>Acction</th>
+                     <th>Email</th>
+                    <th>Shop Name</th>
+                     <th>Action</th>
 
 
                   </tr>
                 </thead>
                
                 <tbody>
-                  <tr v-for="employee in employees" :key="employee.id">
-                    <td>{{employee.name}}</td>
+                  <tr v-for="Supplier in Suppliers" :key="Supplier.id">
+                    <td>{{Supplier.name}}</td>
                     <td>
-                      <img :src="employee.photo" id="e_photo" /> 
+                      <img :src="Supplier.photo" id="s_photo" /> 
 
                       </td>
-                    <td>{{employee.phone}}</td>
-                    <td>{{employee.salary}}</td>
-                    <td>{{employee.joining_date}}</td>
+                    <td>{{Supplier.phone}}</td>
+                    <td>{{Supplier.email}}</td>
+                    <td>{{Supplier.shopName}}</td>
                     <td>
-                      <router-link :to="{name:'editEmployee',params:({id:employee.id})}" class="btn btn-info btn-sm" > Edit</router-link>
-                      <router-link to="/view" class="btn btn-warning btn-sm" > View</router-link>
-                      <a @click="deletEmployee(employee.id)" to="/delete" class="btn btn-danger btn-sm" > Delete</a>
+                      <router-link :to="{name:'editSupplier',params:({id:Supplier.id})}" class="btn btn-info btn-sm" > Edit</router-link>
+                      <router-link to="#" class="btn btn-warning btn-sm" > View</router-link>
+                      <a @click="deleteSupplier(Supplier.id)"  class="btn btn-danger btn-sm" > Delete</a>
 
                     </td>
                    
@@ -85,23 +85,23 @@
         },
        data(){
          return{
-           employees:{}
+           Suppliers:{}
          }
        },
        methods:{
-         async allEmployes(){
-           this.employees={};
-           await axios.get('/api/employee/')
-           .then(({data})=>(this.employees = data))
+         async allSuppliers(){
+           this.Suppliers={};
+           await axios.get('/api/supplier')
+           .then(({data})=>(this.Suppliers = data))
            .catch()
            $(document).ready(function() {
               $('#dataTable').DataTable();
             });
          },
 
-           deletEmployee(id){
+           deleteSupplier(id){
 
-         console.log(id);
+             console.log(id);
 
          Swal.fire({
                 title: 'Are you sure?',
@@ -113,13 +113,13 @@
                 confirmButtonText: 'Yes, delete it!'
               }).then((result) => {
                 if (result.isConfirmed) {
-                  axios.delete('api/employee/'+id)
+                  axios.delete('api/supplier/'+id)
                   .then(()=>{
                     //  this.employees=this.employees.filter(employee=>{
                     //    return employee.id !=id
                         //  })
 
-                     this.allEmployes();
+                     this.allSuppliers();
 
                      Swal.fire(
                     'Deleted!',
@@ -141,7 +141,7 @@
        },
      
        created(){
-         this.allEmployes();
+         this.allSuppliers();
        }
       
     }
@@ -149,7 +149,7 @@
 </script>
 
 <style>
-	#e_photo{
+	#s_photo{
     height: 80px;
     width: 100px;
   }

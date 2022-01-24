@@ -112,7 +112,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <router-link class="dropdown-item" to="addEmployee">Add Employee</router-link>
-          <router-link class="dropdown-item" to="vewAllEmployee" >All Employee</router-link>
+          <router-link class="dropdown-item" to="viewAllEmployee" >All Employee</router-link>
          
         </div>
       </li>
@@ -122,8 +122,8 @@
           <span>Suppliers</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <router-link class="dropdown-item" to="addSupplier">Add Suppliers</router-link>
-          <router-link class="dropdown-item" to="vewAllSupplier" >All Suppliers</router-link>
+          <router-link class="dropdown-item" to="addSupplier">Add Supplier</router-link>
+          <router-link class="dropdown-item" to="viewAllSupplier" >All Suppliers</router-link>
          
         </div>
       </li>
