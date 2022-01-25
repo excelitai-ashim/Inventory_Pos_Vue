@@ -14,8 +14,20 @@ let addSupplier= require('../components/supplier/addSupplier.vue').default;
 let viewAllSupplier= require('../components/supplier/viewAllSupplier.vue').default;               
 let editSupplier= require('../components/supplier/editSupplier.vue').default;
 
+//
+let addCategory= require('../components/category/addCategory.vue').default;
+let viewAllCategory= require('../components/category/viewAllCategory.vue').default;               
+let editCategory= require('../components/category/editCategory.vue').default;                      
 
+//
+let addProduct= require('../components/product/addProduct.vue').default;
+let viewAllProduct= require('../components/product/viewAllProduct.vue').default;               
+let editProduct= require('../components/product/editProduct.vue').default; 
 
+//
+let addExpense= require('../components/expense/addExpense.vue').default;
+let TodayExpense= require('../components/expense/TodayExpense.vue').default;               
+let editExpense= require('../components/expense/editExpense.vue').default; 
 
 
 export const routes = [
@@ -36,6 +48,20 @@ export const routes = [
     { path: '/editSupplier/:id', component:editSupplier,name:'editSupplier' },
 
 
+    //
+    { path: '/addCategory', component:addCategory,name:'addCategory' },
+    { path: '/viewAllCategory', component:viewAllCategory,name:'viewAllCategory' },
+    { path: '/editCategory/:id', component:editCategory,name:'editCategory' },
 
+     //
+     { path: '/addProduct', component:addProduct,name:'addProduct' },
+     { path: '/viewAllProduct', component:viewAllProduct,name:'viewAllProduct' },
+     { path: '/editProduct/:id', component:editProduct,name:'editProduct' },
+     
+      //
+      { path: '/addExpense', component:addExpense,name:'addExpense' },
+      { path: '/TodayExpense', component:TodayExpense,name:'TodayExpense' },
+      { path: '/editExpense/:id', component:editExpense,name:'editExpense' },
+  
 
   ]

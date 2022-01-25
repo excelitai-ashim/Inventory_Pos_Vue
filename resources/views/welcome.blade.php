@@ -128,6 +128,41 @@
         </div>
       </li>
 
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Category</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <router-link class="dropdown-item" to="addCategory">Add Category</router-link>
+          <router-link class="dropdown-item" to="viewAllCategory" >All Category</router-link>
+         
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Products</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <router-link class="dropdown-item" to="addProduct">Add Product</router-link>
+          <router-link class="dropdown-item" to="viewAllProduct" >All Products</router-link>
+         
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Expense</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <router-link class="dropdown-item" to="addExpense">Add Expense</router-link>
+          <router-link class="dropdown-item" to="TodayExpense">All Expense</router-link>
+         
+        </div>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
