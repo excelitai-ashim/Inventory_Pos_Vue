@@ -10,6 +10,15 @@ class Notification{
            
         }).show();
     }
+    custom(value){
+        new Noty({
+            type: 'warning',
+            text: value,
+            layout : "topRight",
+            timeout : 1000
+           
+        }).show();
+    }
 
     alert(){
         new Noty({

@@ -54,7 +54,15 @@ class ExpensesController extends Controller
    
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'details' => 'required|max:255',
+            'amount'=> 'required'
+           ]);
+        Expenses::findOrFail($id)->update([
+            'details'   => $request->details,  
+            'amount'   => $request->amount,
+           
+        ]);
     }
 
   

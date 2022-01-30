@@ -13,7 +13,7 @@
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
             Expense Insert 
-            <router-link to="/expense" class="btn btn-sm btn-info" id="add_new"> All Expense</router-link>
+            <router-link to="/TodayExpense" class="btn btn-sm btn-info" id="add_new"> All Expense</router-link>
           </div>
           <form @submit.prevent="expenseInsert">
             <div class="card-body">
@@ -42,7 +42,7 @@
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
          </div>
        </div>
-   </div>
+   
 </template>
 
 <script>

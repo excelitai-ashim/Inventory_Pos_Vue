@@ -29,6 +29,16 @@ let addExpense= require('../components/expense/addExpense.vue').default;
 let TodayExpense= require('../components/expense/TodayExpense.vue').default;               
 let editExpense= require('../components/expense/editExpense.vue').default; 
 
+//
+let addSalary= require('../components/salary/addSalary.vue').default;
+let createSalary= require('../components/salary/create.vue').default;
+
+
+
+ let allSalary= require('../components/salary/allSalary.vue').default;               
+// let editSalary= require('../components/salary/editSalary.vue').default; 
+// let viewsalary = require('./components/salary/view.vue').default;
+
 
 export const routes = [
     { path: '/', component:login,name:'/' },
@@ -62,6 +72,15 @@ export const routes = [
       { path: '/addExpense', component:addExpense,name:'addExpense' },
       { path: '/TodayExpense', component:TodayExpense,name:'TodayExpense' },
       { path: '/editExpense/:id', component:editExpense,name:'editExpense' },
+
+      //salary--
+      { path: '/addSalary', component:addSalary,name:'addSalary' },
+      { path: '/createSalary/:id', component: createSalary, name:'createSalary',props:true },
+
+       { path: '/allSalary', component:allSalary,name:'allSalary' },
+    //   { path: '/editSalary/:id', component:editSalary,name:'editSalary' }, 
+    //   { path: '/view-salary/:id', component: viewsalary, name:'view-salary' },
+  
   
 
   ]

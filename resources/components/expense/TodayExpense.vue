@@ -42,7 +42,7 @@
                       <td>{{ expense.expenses_date }}</td>
                      
                       <td>
-                        <!-- <router-link :to="{name: 'edit-expense', params:{id: expense.id} }" class="btn btn-sm btn-info">Edit</router-link> -->
+                        <router-link :to="{name: 'editExpense', params:{id: expense.id} }" class="btn btn-sm btn-info">Edit</router-link>
                         <a @click="deleteExpense(expense.id)" class="btn btn-sm btn-danger">Delete</a>
                       </td>
                     </tr> 
