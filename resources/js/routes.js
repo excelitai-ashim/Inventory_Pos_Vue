@@ -5,6 +5,11 @@
  let logout= require('../components/auth/logout.vue').default;
 //
  let home= require('../components/home.vue').default;
+
+ let stock= require('../components/product/stock.vue').default;
+ let editStock= require('../components/product/editStock.vue').default;
+
+
 //
  let addEmployee= require('../components/employee/addEmployee.vue').default;
  let viewAllEmployee= require('../components/employee/viewAllEmployee.vue').default;               
@@ -32,12 +37,9 @@ let editExpense= require('../components/expense/editExpense.vue').default;
 //
 let addSalary= require('../components/salary/addSalary.vue').default;
 let createSalary= require('../components/salary/create.vue').default;
-
-
-
- let allSalary= require('../components/salary/allSalary.vue').default;               
-// let editSalary= require('../components/salary/editSalary.vue').default; 
-// let viewsalary = require('./components/salary/view.vue').default;
+let allSalary= require('../components/salary/allSalary.vue').default;               
+ let monthSalary = require('../components/salary/monthSalary.vue').default;
+ let editSalary= require('../components/salary/editSalary.vue').default; 
 
 
 export const routes = [
@@ -46,7 +48,13 @@ export const routes = [
     { path: '/forgetPas', component:forgetPas,name:'forgetPas' },
     { path: '/logout', component:logout,name:'logout' },
      //
-    { path: '/home', component:home,name:'home' },
+    { path: '/home', component:home,name:'home' },  
+
+    //
+    { path: '/stock', component:stock,name:'stock' },
+    { path: '/editStock/:id', component:editStock,name:'editStock' },
+
+
      //
     { path: '/addEmployee', component:addEmployee,name:'addEmployee' },
     { path: '/viewAllEmployee', component:viewAllEmployee,name:'viewAllEmployee' },
@@ -73,13 +81,12 @@ export const routes = [
       { path: '/TodayExpense', component:TodayExpense,name:'TodayExpense' },
       { path: '/editExpense/:id', component:editExpense,name:'editExpense' },
 
-      //salary--
+      //salary  ,props:true --
       { path: '/addSalary', component:addSalary,name:'addSalary' },
-      { path: '/createSalary/:id', component: createSalary, name:'createSalary',props:true },
-
-       { path: '/allSalary', component:allSalary,name:'allSalary' },
-    //   { path: '/editSalary/:id', component:editSalary,name:'editSalary' }, 
-    //   { path: '/view-salary/:id', component: viewsalary, name:'view-salary' },
+      { path: '/createSalary/:id', component: createSalary, name:'createSalary'},
+      { path: '/allSalary', component:allSalary,name:'allSalary' },
+      { path: '/view-monthSalary/:id', component: monthSalary, name:'monthSalary' },
+      { path: '/editSalary/:id', component:editSalary,name:'editSalary' }, 
   
   
 

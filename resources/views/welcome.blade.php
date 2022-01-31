@@ -175,14 +175,10 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <router-link  class="nav-link" to="/stock">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+          <span>Stock</span></a>
+        </router-link>
       </li>
     </ul>
 

@@ -4,110 +4,137 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
            <router-link to="/home"  id="home"> Dashboard</router-link>
-
           </li>
-          <li class="breadcrumb-item active">Expense</li>
+          <li class="breadcrumb-item active">Salary</li>
         </ol>
         <!-- Icon Cards-->
-       <div class=" container">
-		    <div class="row">
+       <div class="row container">
          <div class="card col-lg-12">
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
-            Expense Update 
-            <router-link to="/TodayExpense" class="btn btn-sm btn-info" id="add_new"> All Expense</router-link>
+            Salary Update 
+           
           </div>
           <div class="card-body">
-          	  <form @submit.prevent="expenseUpdate" enctype="multipart/form-data">
-                <div class="card-body">
+          	  <form @submit.prevent="SalaryUpdate" >
                 <div class="form-group">
 	              <div class="form-row">
-	               <div class="col-md-12">
-	               	<div class="form-group">
-				       <label for="exampleFormControlTextarea1">Details Of Expense</label>
-				       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="form.details"></textarea> 
-				       <small class="text-danger" v-if="errors.details">{{ errors.details[0] }}</small>
-				     </div>
+	               <div class="col-md-6">
+	                <div class="form-label-group">
+	                  <input type="text" v-model="form.name" class="form-control"   required="">
+	                  <small class="text-danger" v-if="errors.name">{{ errors.name[0] }}</small>
+	                  <label for="firstName">Full Name</label>
+	                </div>
 	               </div>
-	               <div class="col-lg-12">
-	               	<div class="form-label-group">
-	                  <input type="text" v-model="form.amount" class="form-control"   >
-	                  <small class="text-danger" v-if="errors.amount">{{ errors.amount[0] }}</small>
-	                  <label for="firstName">Expense Amount</label>
+	               <div class="col-md-6">
+	                <div class="form-label-group">
+	                  <input type="text" v-model="form.email" class="form-control" >
+	                  <small class="text-danger" v-if="errors.email">{{ errors.email[0] }}</small>
+	                  <label for="lastName">Email Address</label>
 	                </div>
 	               </div>
 	             </div>
-	            </div>     
 	          </div>
-
+	          <div class="form-group">
+	              <div class="form-row">
+	               <div class="col-md-6">
+	                  <div class="form-group">
+					   
+					    <select class="form-control" id="exampleFormControlSelect1" v-model="form.salary_month">
+					      <option value="January">January</option>
+					      <option value="February">February</option>
+					      <option value="March">March</option>
+					      <option value="April">April</option>
+					      <option value="May">May</option>
+					      <option value="June">June</option>
+					      <option value="July">July</option>
+					      <option value="August">August</option>
+					      <option value="September">September</option>
+					      <option value="October">October</option>
+					      <option value="November">November</option>
+					      <option value="Devember">December</option>
+					    </select>
+					    <small class="text-danger" v-if="errors.salary_month">{{ errors.salary_month[0] }}</small>
+					  </div>
+					  <input type="hidden" v-model="form.employee_id">
+	               </div>
+	               <div class="col-md-6">
+	                <div class="form-label-group">
+	                  <input type="text" v-model="form.amount" class="form-control"  required="">
+	                  <label for="lastName">Salary</label>
+	                  <small class="text-danger" v-if="errors.amount">{{ errors.amount[0] }}</small>
+	                </div>
+	               </div>
+	             </div>
+	          </div>
                <button type="submit" class="btn btn-success">Update</button>
               </form>
           </div>
           <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
          </div>
        </div>
-	   </div>
    </div>
 </template>
 
 <script>
-    export default {
+   export default {
     	mounted(){
-			// console.log(User);
             if (!User.loggedin()) {
                this.$router.push({ name:'/' })
             } 
-		
         },
         data(){
         	return{
         		form:{
-        			details :'',
-        			amount :'',
-        			
+        			name :'',
+        			email :'',
+					amount:'',
+         			salary_month:'',
+        			employee_id:'',
+					
         		},
-			
         		errors:{},
         	}
         },
-        	mounted(){
-			                    
-                   
-                let id=this.$route.params.id
-             
-                  axios.get('/api/expense/'+id)
-                 .then(({data})=>(this.form = data))
-                 .catch(console.log('error'))
-		
+        created(){
+        	let id = this.$route.params.id
+        	axios.get('/api/editSalary/'+id)
+        	.then(({data}) => {
+				this.form.name = data.employee.name;
+				this.form.email = data.employee.email;
+				for(let key in data){
+					if(this.form.hasOwnProperty(key)){
+						this.form[key] = data[key];
+						// console.log(this.form[key],'this is thisform')
+					}
+				}
+			
+			})
+        	.catch()
         },
         methods:{ 	
-        	
-        	expenseUpdate(){
-		     	let id=this.$route.params.id;
-				 let formData = new FormData();
-			    for(let i in this.form){
-                    formData.append(i,this.form[i]);
-				}
-          
-        		axios.post('/api/expense/'+id+'/update',formData)
+        	SalaryUpdate(){
+        		let id = this.$route.params.id
+        		axios.post('/api/salary/update/'+id,this.form)
         		.then(() => {
-					Notification.success()
-        			this.$router.push({ name: 'TodayExpense' })
+        			this.$router.push({ name: 'allSalary' })
+        			Notification.success()
         		})
-        		.catch(error => {
-					console.log(error)
-					if(error.response.status === 422){
-						this.errors = error.response.data.errors;
-					}
-					
-				})
+        		.catch(error => this.errors = error.response.data.errors)
         	},
         	
-        },
-		
+        }
+    	
     }
   
 </script>
+
+<style>
+	
+#add_new{
+	float: right;
+}
+</style>
 
 <style>
 	

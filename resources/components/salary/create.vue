@@ -3,17 +3,17 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+           <router-link to="/home"  id="home"> Dashboard</router-link>
           </li>
-          <li class="breadcrumb-item active">Employee</li>
+          <li class="breadcrumb-item active">Salary</li>
         </ol>
         <!-- Icon Cards-->
        <div class="row container">
          <div class="card col-lg-12">
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
-            Employee Update 
-            <router-link to="/viewAllEmployee" class="btn btn-sm btn-info" id="add_new"> All Employee</router-link>
+           Create Salary 
+            <router-link to="/addSalary" class="btn btn-sm btn-info" id="add_new"> Pay Salary</router-link>
           </div>
           <div class="card-body">
           	  <form @submit.prevent="SalaryPaid" >
@@ -52,7 +52,7 @@
 					      <option value="September">September</option>
 					      <option value="October">October</option>
 					      <option value="November">November</option>
-					      <option value="Devember">Devember</option>
+					      <option value="Devember">December</option>
 					    </select>
 
 					    <small class="text-danger" v-if="Object.keys(errors) && errors.salary_month">{{ errors.salary_month[0] }}</small>

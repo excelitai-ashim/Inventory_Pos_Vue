@@ -142,4 +142,17 @@ class ProductController extends Controller
 
         }
     }
+
+       public function StockUpdate(Request $request,$id)
+    {
+
+        $validatedData = $request->validate([
+            'product_quantity' => 'required',
+            ]);
+
+            Product::findOrFail($id)->update([
+                'product_quantity'     => $request->product_quantity,
+               
+            ]);
+    }
 }

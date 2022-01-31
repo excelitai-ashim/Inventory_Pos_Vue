@@ -47,21 +47,17 @@ Route::post('/category/{category}/update',[CategoryController::class,'update']);
 // Product Resource Route
 Route::apiResource('/product',ProductController::class);
 Route::post('/product/{product}/update',[ProductController::class,'update']);
+Route::Post('/stock/update/{id}',[ProductController::class,'StockUpdate']);
+
 
 // expense Resource Route
 Route::apiResource('/expense',ExpensesController::class);
 Route::post('/expense/{expense}/update',[ExpensesController::class,'update']);
 
 
-// Route::Post('/salary/paid/{id}','Api\SalaryController@Paid');
 Route::post('/salary/paid/{id}',[SalaryController::class,'Paid']);
-//Route::Get('/salary','Api\SalaryController@AllSalary');
-Route::Get('/salary',[SalaryController::class,'AllSalary']);
-//Route::Get('/salary/view/{id}','Api\SalaryController@ViewSalary');
-Route::Get('/salary/view/{id}',[SalaryController::class,'ViewSalary']);
-//Route::Get('/edit/salary/{id}','Api\SalaryController@EditSalary');
-Route::Get('/edit/salary/{id}',[SalaryController::class,'EditSalary']);
-//Route::Post('/salary/update/{id}','Api\SalaryController@SalaryUpdate');
+Route::Get('/allSalary',[SalaryController::class,'AllSalary']);
+Route::Get('/monthSalary/{id}',[SalaryController::class,'viewmonthSalary']);
+Route::Get('/editSalary/{id}',[SalaryController::class,'EditSalary']);
 Route::Post('/salary/update/{id}',[SalaryController::class,'SalaryUpdate']);
-//Route::Post('/stock/update/{id}','Api\SalaryController@StockUpdate');
-Route::Post('/stock/update/{id}',[SalaryController::class,'StockUpdate']);
+

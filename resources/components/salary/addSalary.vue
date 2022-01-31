@@ -3,27 +3,31 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+          <router-link to="/home"  id="home"> Dashboard</router-link>
+
           </li>
-          <li class="breadcrumb-item active">All Employee</li>
+          <li class="breadcrumb-item active">Salary</li>
         </ol>
         <!-- Icon Cards-->
-       <div class="row card container">
+        <div class="container">
+         <div class="row" >
+         <div class="card col-lg-12">
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
-            Employee Salary Pay 
-           
+            All Salaries 
+            <router-link to="/allSalary" class="btn btn-sm btn-info" id="add_new"> AllSalary</router-link>
           </div>
           <div class="card-body">
-            <div class="card-body">
-              <div class="table-responsive">
-                <label>Search</label>
-               <input type="text" v-model="searchTerm" class="form-control" style="width:200px; "><br>
-                <table class="table table-bordered"  cellspacing="0">
+
+                          <!-- ######################################################################### -->
+
+          	  <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 
                   <thead>
                     <tr>
-                      <th>Id</th>
+                     
                       <th>Name</th>
                       <th>Photo</th>
                       <th>Phone</th>
@@ -34,8 +38,8 @@
                 
                   <tbody>
 
-                    <tr v-for="employee in filtersearch" :key="employee.id">
-                      <td>{{ employee.id }}</td>
+                    <tr v-for="employee in employees" :key="employee.id">
+                     
                       <td>{{ employee.name }}</td>
                       <td><img :src="employee.photo" id="em_photo"></td>
                       <td>{{ employee.phone }}</td>
@@ -48,11 +52,16 @@
                   </tbody>
                 </table>
               </div>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
+
+                       <!-- ######################################################################### -->
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+         </div>
+       </div>
        </div>
    </div>
+   
 </template>
 
 <script>
@@ -69,21 +78,18 @@
         data(){
           return{
             employees:[],
-            searchTerm:'',         
+                 
           }
         },
-       computed:{
-         filtersearch(){
-          return this.employees.filter(employee => {
-             return employee.name.match(this.searchTerm)
-           })
-         }
-       },
+   
         methods:{
-          allEmployee(){
-            axios.get('/api/employee/')
+          async allEmployee(){
+           await axios.get('/api/employee/')
             .then(({data}) => (this.employees = data))
             .catch()
+              $(document).ready(function() {
+              $('#dataTable').DataTable();
+            });
           },
         },
       

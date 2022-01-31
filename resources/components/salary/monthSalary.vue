@@ -5,7 +5,7 @@
           <li class="breadcrumb-item">
            <router-link to="/home"  id="home"> Dashboard</router-link>
           </li>
-          <li class="breadcrumb-item active"> All Products</li>
+          <li class="breadcrumb-item active"> Salary</li>
         </ol>
         <!-- Icon Cards-->
        <div class="container">
@@ -13,8 +13,8 @@
          <div class="card col-lg-12">
           <div class="card-header">
             <i class="fas fa-chart-area"></i>
-            All Products 
-            <router-link to="/addProduct" class="btn btn-sm btn-info" id="add_new"> Add Product</router-link>
+          Employee Salary Details
+            <router-link to="/allSalary" class="btn btn-sm btn-info" id="add_new"> All Salary</router-link>
           </div>
           <div class="card-body">
 
@@ -27,37 +27,26 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Photo</th>
-                    <th>Category</th>
-                    <th>Buying Price</th>
-                    <th>Selling Price</th>
-                    <th>Root</th>
-                    <th>Supplier</th>
-                     <th>Action</th>
+                      <th>Name</th>
+                      <th>Month</th>
+                      <th>Amount</th>
+                      <th>Date</th>
+                      <th>Action</th>
 
 
                   </tr>
                 </thead>
                
                 <tbody>
-                  <tr v-for="product in products" :key="product.id">
-                    <td>{{product.product_name}}</td>
+                  <tr v-for="salary in salaryes" :key="salary.id">
+                    <td>{{salary.employee.name}}</td>
+                    <td>{{salary.salary_month}}</td>
+                    <td>{{salary.amount}}</td>
+                    <td>{{salary.salary_date}}</td>    
                     <td>
-                      <img :src="product.image" id="e_photo" /> 
+                        <router-link :to="{name: 'editSalary', params:{id:salary.id} }" class="btn btn-sm btn-info">Edit Salary</router-link>
 
-                    </td>
-                    <td>{{product.category_name}}</td>
-                    <td>{{product.buying_price}}</td>
-                    <td>{{product.selling_price}}</td>
-                    <td>{{product.root}}</td>
-                    <td>{{product.supplier_name}}</td>
-                    <td>
-                      <router-link :to="{name:'editProduct',params:({id:product.id})}" class="btn btn-info btn-sm" > Edit</router-link>
-                      <router-link to="#" class="btn btn-warning btn-sm" > View</router-link>
-                      <a @click="deletproduct(product.id)" class="btn btn-danger btn-sm" > Delete</a>
-
-                    </td>
+                    </td> 
                    
                   </tr>
             
@@ -87,21 +76,21 @@
         },
        data(){
          return{
-           products:{}
+           salaryes:{}
          }
        },
        methods:{
-         async allProducts(){
-           this.products={};
-           await axios.get('/api/product/')
-           .then(({data})=>(this.products = data))
+         async allEmployes(){
+          let id = this.$route.params.id
+           await axios.get('/api/monthSalary/'+id)
+           .then(({data})=>(this.salaryes = data))
            .catch(err=>console.log(err))
            $(document).ready(function() {
               $('#dataTable').DataTable();
             });
          },
 
-         deletproduct(id){
+         deletEmployee(id){
             console.log(id);
             Swal.fire({
                 title: 'Are you sure?',
@@ -113,12 +102,12 @@
                 confirmButtonText: 'Yes, delete it!'
               }).then((result) => {
                   if (result.isConfirmed) {
-                    axios.delete('api/product/'+id)
+                    axios.delete('api/employee/'+id)
                     .then(()=>{
                       //  this.employees=this.employees.filter(employee=>{
                       //    return employee.id !=id
                           //  })
-                          this.allProducts();
+                          this.allEmployes();
 
                           Swal.fire(
                           'Deleted!',
@@ -127,7 +116,7 @@
                         )
                     })
                     .catch(()=>{
-                      this.$route.push({name: 'viewAllProduct'})
+                      this.$route.push({name: 'vewAllEmployee'})
                     })
                     
                     
@@ -137,7 +126,7 @@
        },
      
        created(){
-         this.allProducts();
+         this.allEmployes();
        }
       
     }
@@ -149,11 +138,5 @@
     height: 80px;
     width: 100px;
   }
-
-  .card {
-        margin: 0 auto; /* Added */
-        float: none; /* Added */
-        margin-bottom: 5px; /* Added */
-}
 
 </style>
