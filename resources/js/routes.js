@@ -5,6 +5,8 @@
  let logout= require('../components/auth/logout.vue').default;
 //
  let home= require('../components/home.vue').default;
+ let pos= require('../components/pos/pointofsale.vue').default;
+
 
  let stock= require('../components/product/stock.vue').default;
  let editStock= require('../components/product/editStock.vue').default;
@@ -50,10 +52,14 @@ let allSalary= require('../components/salary/allSalary.vue').default;
 export const routes = [
     { path: '/', component:login,name:'/' },
     { path: '/register', component:register,name:'register' },
-    { path: '/forgetPas', component:forgetPas,name:'forgetPas' },
+    { path: '/forgetPas', component:forgetPas,name:'forgetPas' },  
     { path: '/logout', component:logout,name:'logout' },
      //
     { path: '/home', component:home,name:'home' },  
+
+    // pos
+    { path: '/pos', component:pos,name:'pos' },  
+
 
     //
     { path: '/stock', component:stock,name:'stock' },
