@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;  
 use App\Http\Controllers\api\EmployeeController;
 use App\Http\Controllers\api\SupplierController;
+use App\Http\Controllers\api\CustomerController;
 use App\Http\Controllers\api\CategoryController;
 use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\api\ExpensesController;
@@ -39,6 +40,10 @@ Route::post('/employee/{employee}/update',[EmployeeController::class,'update']);
 // Supplier Resource Route
 Route::apiResource('/supplier',SupplierController::class);
 Route::post('/supplier/{supplier}/update',[SupplierController::class,'update']);
+
+// Supplier Resource Route
+Route::apiResource('/customer',CustomerController::class);
+Route::post('/customer/{customer}/update',[CustomerController::class,'update']);
 
 // Category Resource Route
 Route::apiResource('/category',CategoryController::class);

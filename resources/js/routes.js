@@ -20,6 +20,11 @@ let viewAllSupplier= require('../components/supplier/viewAllSupplier.vue').defau
 let editSupplier= require('../components/supplier/editSupplier.vue').default;
 
 //
+let addCustomer= require('../components/customer/addCustomer.vue').default;
+let viewAllCustomer= require('../components/customer/viewAllCustomer.vue').default;               
+let editCustomer= require('../components/customer/editCustomer.vue').default;
+
+//
 let addCategory= require('../components/category/addCategory.vue').default;
 let viewAllCategory= require('../components/category/viewAllCategory.vue').default;               
 let editCategory= require('../components/category/editCategory.vue').default;                      
@@ -65,6 +70,10 @@ export const routes = [
     { path: '/viewAllSupplier', component:viewAllSupplier,name:'viewAllSupplier' },
     { path: '/editSupplier/:id', component:editSupplier,name:'editSupplier' },
 
+    //
+    { path: '/addCustomer', component:addCustomer,name:'addCustomer' },
+    { path: '/viewAllCustomer', component:viewAllCustomer,name:'viewAllCustomer' },
+    { path: '/editCustomer/:id', component:editCustomer,name:'editCustomer' },
 
     //
     { path: '/addCategory', component:addCategory,name:'addCategory' },

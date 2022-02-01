@@ -21,11 +21,6 @@ class EmployeeController extends Controller
             }
 
         
-            public function create()
-            {
-                //
-            }
-
         
             public function store(Request $request)
             {
@@ -92,14 +87,28 @@ class EmployeeController extends Controller
         
             public function show($id)
             {
-                            $employee=new EmployeeResource(Employee::find($id)) ;
+            $employee=new EmployeeResource(Employee::find($id)) ;
 
-                            return response()->json($employee);
+            return response()->json($employee);
             }
 
             
             public function update(Request $request, $id)
             {
+
+
+                $request->validate([
+                    'name'=> 'required|max:255',
+                    'email'    => 'required|unique:employees|max:255',
+                    'phone'=> 'required|unique:employees',   
+                    'address'=> 'required',
+                    'salary'=> 'required',
+                    'photo'=> 'required',
+                    'nid'=> 'required',
+                    'joining_date'=> 'required',      
+
+                ]);
+
                         $employee=Employee::where('id',$id)->first();
             
 
