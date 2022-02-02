@@ -44,7 +44,7 @@
                   <tr v-for="product in products" :key="product.id">
                     <td>{{product.product_name}}</td>
                     <td>
-                      <img :src="product.image" id="e_photo" /> 
+                      <img :src="product.image" id="e_photo" class="card-img-top" /> 
 
                     </td>
                     <td>{{product.category_name}}</td>
