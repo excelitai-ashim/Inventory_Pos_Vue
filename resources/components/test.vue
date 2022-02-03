@@ -34,7 +34,7 @@
                               <button @click.prevent="increment(card.id)" class="btn btn-sm btn-success">+</button>
 
                               <button  @click.prevent="decrement(card.id)" class="btn btn-sm btn-danger" v-if="card.pro_quantity >= 2">-</button>
-                              <button class="btn btn-sm btn-danger" v-else="" disabled="">-</button>
+                              <!-- <button class="btn btn-sm btn-danger" v-else="" disabled="">-</button> -->
 
                             </td>
                             <td>{{ card.product_price }}</td>
@@ -216,7 +216,10 @@
                         </button>
                       </div>
                     </div>
+
                  </div>
+
+
                </div>
             </div>
          </div>
@@ -365,7 +368,10 @@
         subproduct(id)
         {
           axios.get('/api/getting/product/'+id)
-            .then(({data}) => (this.getproducts = data))
+            .then(({data}) => {
+              this.getproducts = data;
+              console.log(data);
+            })
             .catch(error => this.errors = error.response.data.errors)
         },
         //image validationmethod

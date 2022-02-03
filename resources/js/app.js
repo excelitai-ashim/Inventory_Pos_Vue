@@ -18,6 +18,7 @@ window.Notification=Notification
 
 // sweetalert2 import
 import Swal from 'sweetalert2'
+
 window.Swal=Swal
 
 const Toast = Swal.mixin({
@@ -42,6 +43,9 @@ window.Toast=Toast
 
 
 // sweetalert2 End
+
+//for window relode 
+window.Reload=new Vue();
 
 
 

@@ -18,6 +18,38 @@
             Expense Insert 
             <a class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModal" id="add_new"> Add Customer</a>
           </div>
+               <div class="card-body">
+                       <table class="table table-sm table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="card in cards" :key="card.id">
+                            <th>{{ card.pro_name }}</th>
+                            <td><input type="text" readonly="" style="width: 20px;" :value="card.pro_quantity">
+
+                              <button @click.prevent="increment(card.id)" class="btn btn-sm btn-success">+</button>
+
+                              <button  @click.prevent="decrement(card.id)" class="btn btn-sm btn-danger" v-if="card.pro_quantity >= 2">-</button>
+                              <button class="btn btn-sm btn-danger" v-else="" disabled="">-</button>
+
+                            </td>
+                            <td>{{ card.product_price }}</td>
+                            <td>{{ card.sub_total }}</td>
+                            <td><a @click="removeItem(card.id)" class="btn btn-sm btn-danger">x</a></td>
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                      <hr>
+                    </div>
+
           <div class="card-body">
           	
                                               <!-- ######################################################################### -->
@@ -73,13 +105,13 @@
                      <div class="form-group">
                       <div class="form-row">
                        <div class="col-md-6">
-                        <div class="form-label-group">
+                        <div class="form-label-group">                         
                          <input type="file" class="btn" @change="onFileselected">
                           <small class="text-danger" v-if="errors.photo">{{ errors.photo[0] }}</small>
                         </div>
                        </div>
                         <div class="col-md-6">
-                          <img :src="form.photo" style="height:40px; width: 40px;">
+                          <img :src="form.photo" style="height:80px; width: 80px;">
                         </div>
                      </div>
                   </div>
@@ -93,13 +125,8 @@
              </div>
              <!--end customer modal-->
             
-
-
-
-
                                              <!-- ######################################################################### -->
-
-          
+        
           </div>
          </div>
        </div>
@@ -119,11 +146,11 @@
           </div><br>
                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">All</a>
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">All Product</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
-                  </li>
+                      <li class="nav-item" v-for="category in categories" :key="category.id">
+                   <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false" @click="subproduct(category.id)">{{ category.category_name }}</a>
+                 </li>
                  
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
@@ -134,7 +161,7 @@
 
               <div class="row">
                       <div class="col-lg-3 col-md-3 col-sm-6 col-6" v-for="product in filtersearch" :key="product.id">
-                        <a href="#">
+                       <button class="btn bt-sm" @click.prevent="AddToCart(product.id)">
                       <div class="card" style="width: 10rem;">
                        <img :src="product.image" id="e_photo" class="card-img-top" >
                        <div class="card-body">
@@ -145,13 +172,32 @@
                        <span v-else class="badge badge-danger">Stock Out {{product.product_quantity}}</span>
                        </div>
                      </div>
-                    </a>
+                   </Button>
                     </div>          
             </div>
           </div>
           </div>
                   </div>
-                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">.2..</div>
+                  <!-- ????????? for loop Category -->
+                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                   <input type="text" v-model="getsearchTerm" class="form-control" placeholder="search"><br>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-4 col-sm-6 col-6" v-for="getproduct in getfiltersearch" :key="getproduct.id">
+                       <button class="btn btn-sm" @click.prevent="AddToCart(getproduct.id)">
+                        <div class="card" style="width: 9rem; height: 180px;">
+                          <img :src="getproduct.image" class="card-img-top" style="height: 100px; width: 100px;">
+                          <div class="card-body">
+                            <small class="card-title">{{ getproduct.product_name }}</small>
+                            <span class="badge badge-success" v-if="getproduct.product_quantity >= 1"> Availble ({{ getproduct.product_quantity }}) </span>
+                            <span class="badge badge-danger" v-else>Stock Out</span>
+                          </div>
+                        </div>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
 
          </div>
@@ -174,6 +220,15 @@
         },
         created(){
          this.allProduct();
+         this.allCategory();
+         this.cartProduct();
+
+        //  this.allCustomer();
+        //  this.cartProduct();
+        //  this.vat();
+          Reload.$on('AfterAdd', ()=>{
+           this.cartProduct();
+          })
         },
         data(){
           return{
@@ -188,7 +243,13 @@
             },
             errors:{},
             products:[],
-            searchTerm:'',         
+            searchTerm:'',
+            searchTerm:'',
+            getproducts:[],
+            getsearchTerm:'',
+            customers:'', 
+            categories:'',  
+            cards:[],     
           }
         },
        computed:{
@@ -196,19 +257,124 @@
           return this.products.filter(product => {
              return product.product_name.match(this.searchTerm)
            })
+         },
+           getfiltersearch(){
+          return this.getproducts.filter(getproduct => {
+             return getproduct.product_name.match(this.getsearchTerm)
+           })
          }
        },
         methods:{
+          //cart methods here
+          AddToCart(id){
+            axios.get('/api/addTocart/'+id)
+            .then(() => {
+            Reload.$emit('AfterAdd');
+               Notification.cart_success()
+            })
+          },
+           cartProduct(){
+             axios.get('/api/cart/product')
+            .then(({data}) => (this.cards = data))
+            .catch()
+           },
+           removeItem(id){
+             axios.get('/api/remove/cart/'+id)
+             .then(() => {
+                Reload.$emit('AfterAdd');
+                Notification.success()
+             })
+           },
+          // increment(id){
+          //   axios.get('/api/increment/'+id)
+          //   .then(() => {
+          //      Reload.$emit('AfterAdd');
+          //      Notification.success()
+          //   })
+          // },
+          // decrement(id){
+          //   axios.get('/api/decrement/'+id)
+          //   .then(() => {
+          //      Reload.$emit('AfterAdd');
+          //      Notification.success()
+          //   })
+          // },
+          // vat(){
+          //   axios.get('/api/vats')
+          //    .then(({data}) => (this.vats = data))
+          //    .catch()
+          // },
+          // orderdone(){
+          //   let total = this.subtotal*this.vats.vat /100 +this.subtotal;
+          //   var data = {qty:this.qty, subtotal:this.subtotal, customer_id:this.customer_id, payby:this.payby, pay:this.pay, due:this.due, vat:this.vats.vat, total:total}
+          //   axios.post('/api/orderdone/',data)
+          //   .then(() => {
+          //      Notification.success()
+          //      this.$router.push({ name: 'home' })
+          //   })
+          // },
+          ///////////////////////////////////////////////////////////////////////////////////////////////////////
+          //end cart methods
           allProduct(){
             axios.get('/api/product/')
             .then(({data}) => (this.products = data))
             .catch()
           },
+          subproduct(id)
+          {
+            axios.get('/api/getting/product/'+id)
+              .then(({data}) => {
+                console.log(data);
+                this.getproducts = data
+              })
+              .catch(error => this.errors = error.response.data.errors)
+          },
           onFileselected(event){
-            
-          }
-       
+             let file=event.target.files[0];
+            if (file.size > 1048770) {
+              Notification.image_validation()
+            }else{
+              let reader = new FileReader();
+              reader.onload = event => {
+                this.form.photo = event.target.result
+                console.log(event.target.result);
+              };
+              reader.readAsDataURL(file);
+            }
+          },
+          allProduct(){
+            axios.get('/api/product')
+            .then(({data}) => (this.products = data))
+            .catch()
+          },
+          allCategory(){
+            axios.get('/api/category/')
+            .then(({data}) => (this.categories = data))
+            .catch()
         },
+        allCustomer(){
+          axios.get('/api/customer/')
+            .then(({data}) => (this.customers = data))
+            .catch(console.log('error'))
+        },
+        subproduct(id)
+        {
+          axios.get('/api/getting/product/'+id)
+            .then(({data}) => (this.getproducts = data))
+            .catch(error => this.errors = error.response.data.errors)
+        },
+          customerInsert(){
+          axios.post('/api/customer/',this.form)
+            .then(() => {
+              $('#closeModal').click();
+               Notification.success()
+               this.customers = this.customers.filter(customer =>{
+                    return customer.id !=id
+                 })
+              
+            })
+        },
+        }
       
     }
      

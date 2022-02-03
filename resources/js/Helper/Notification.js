@@ -10,6 +10,15 @@ class Notification{
            
         }).show();
     }
+        cart_success(){
+            new Noty({
+                type: 'success',
+                text: 'Successfully Added',
+                layout : "topRight",
+                timeout : 1000
+               
+            }).show();
+    }
     custom(value){
         new Noty({
             type: 'warning',

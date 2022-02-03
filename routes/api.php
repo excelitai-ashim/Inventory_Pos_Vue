@@ -10,12 +10,8 @@ use App\Http\Controllers\api\CategoryController;
 use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\api\ExpensesController;
 use App\Http\Controllers\api\SalaryController;
-
-
-
-
-
-
+use App\Http\Controllers\api\CartController;
+use App\Http\Controllers\api\PosController;
 
 
 Route::group([
@@ -65,4 +61,22 @@ Route::Get('/allSalary',[SalaryController::class,'AllSalary']);
 Route::Get('/monthSalary/{id}',[SalaryController::class,'viewmonthSalary']);
 Route::Get('/editSalary/{id}',[SalaryController::class,'EditSalary']);
 Route::Post('/salary/update/{id}',[SalaryController::class,'SalaryUpdate']);
+
+// Pos Controller
+Route::get('/getting/product/{category_id}',[PosController::class,'getProductViaCategory']);
+
+// Cart Controller
+Route::get('/addTocart/{product_id}',[CartController::class,'addToCart']);
+Route::get('/cart/product',[CartController::class,'CartProduct']);
+Route::get('/remove/cart/{id}',[CartController::class,'removeCart']);
+
+
+
+
+
+
+
+
+
+
 
