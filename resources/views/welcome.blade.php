@@ -199,6 +199,13 @@
           <span>Stock</span></a>
         </router-link>
       </li>
+
+      <li class="nav-item">
+        <router-link  class="nav-link" to="#">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Vat</span></a>
+        </router-link>
+      </li>
     </ul>
 
     <div id="content-wrapper">

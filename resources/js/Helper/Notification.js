@@ -19,9 +19,9 @@ class Notification{
                
             }).show();
     }
-    custom(value){
+    custom(value,type="warning"){
         new Noty({
-            type: 'warning',
+            type: type,
             text: value,
             layout : "topRight",
             timeout : 1000

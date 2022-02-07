@@ -70,6 +70,22 @@ Route::get('/addTocart/{product_id}',[CartController::class,'addToCart']);
 Route::get('/cart/product',[CartController::class,'CartProduct']);
 Route::get('/remove/cart/{id}',[CartController::class,'removeCart']);
 
+Route::get('/increment/{id}',[CartController::class,'Increment']);
+Route::get('/decrement/{id}',[CartController::class,'decrement']);
+Route::get('/vats',[CartController::class,'Vats']);
+
+
+Route::post('/orderdone',[PosController::class,'OrderDone']);
+
+
+// Route::get('/orders','Api\OrderController@TodayOrder');
+// Route::get('/order/details/{id}','Api\OrderController@OrderDetails');
+// Route::get('/order/orderdetails/{id}','Api\OrderController@OrderDetailsAll');
+// Route::post('/search/order/','Api\OrderController@SearchOrderDate');
+// Route::post('/search/month/','Api\OrderController@SearchMonth');
+
+
+
 
 
 

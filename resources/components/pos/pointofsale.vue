@@ -32,12 +32,12 @@
                         <tbody>
                           <tr v-for="card in cards" :key="card.id">
                             <th>{{ card.pro_name }}</th>
-                            <td><input type="text" readonly="" style="width: 20px;" :value="card.pro_quantity">
+                            <td><input type="text" readonly="" style="width: 30px;" :value="card.pro_quantity">
 
-                              <button @click.prevent="increment(card.id)" class="btn btn-sm btn-success">+</button>
+                              <button @click.prevent="increment(card.pro_id)" class="btn btn-sm btn-success">+</button>
 
-                              <button  @click.prevent="decrement(card.id)" class="btn btn-sm btn-danger" v-if="card.pro_quantity >= 2">-</button>
-                              <button class="btn btn-sm btn-danger" v-else="" disabled="">-</button>
+                              <button  @click.prevent="decrement(card.pro_id)" class="btn btn-sm btn-danger" v-if="card.pro_quantity >= 2">-</button>
+                              <button class="btn btn-sm btn-danger" v-else disabled="">-</button>
 
                             </td>
                             <td>{{ card.product_price }}</td>
@@ -49,11 +49,55 @@
                       </table>
                       <hr>
                     </div>
+                     <div class="card-footer">
+                      <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                         Total Quantity:
+                          <strong>{{ qty }}</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                         Sub Total:
+                          <strong>{{ subtotal }} Tk</strong>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                          Vat:
+                         <strong> {{ vats.vat }} % </strong>
+                        </li>
+                         <li class="list-group-item d-flex justify-content-between align-items-center">
+                          Total:
+                         <strong> {{ total}} Tk</strong>
+                        </li>
+                      </ul>
+                      <br>
+                    <form @submit.prevent="orderdone">
+                      <label>Customer Name</label>
+                      <select class="form-control"  v-model="customer_id">
+                         <option :value="customer.id" v-for="customer in customers" :key="customer.id">{{ customer.name }}</option>
+                      </select>
+
+                      <label>Pay</label>
+                      <input type="text" class="form-control"  v-model="pay">
+
+                      <label>Due</label>
+                      <input type="text" class="form-control" readonly  :value="getDue">
+                       
+                      <label>Pay By </label>
+                      <select class="form-control" v-model="payby">
+                         <option value="HandCash">Hand Cash</option>
+                         <option value="Cheaque">Cheaque</option>
+                         <option value="GiftCard">Gift Card</option>
+                      </select>
+
+                      <br>
+                      <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                  </div>
+                   
 
           <div class="card-body">
           	
                                               <!-- ######################################################################### -->
-                                                <!--customer add modal--> 
+                                         <!--customer add modal--> 
              <!-- Modal -->
              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                <div class="modal-dialog" role="document">
@@ -183,7 +227,9 @@
 
                    <input type="text" v-model="getsearchTerm" class="form-control" placeholder="search"><br>
                     <div class="row">
+
                       <div class="col-lg-3 col-md-4 col-sm-6 col-6" v-for="getproduct in getfiltersearch" :key="getproduct.id">
+
                        <button class="btn btn-sm" @click.prevent="AddToCart(getproduct.id)">
                         <div class="card" style="width: 9rem; height: 180px;">
                           <img :src="getproduct.image" class="card-img-top" style="height: 100px; width: 100px;">
@@ -194,6 +240,7 @@
                           </div>
                         </div>
                         </button>
+
                       </div>
                     </div>
 
@@ -223,9 +270,9 @@
          this.allCategory();
          this.cartProduct();
 
-        //  this.allCustomer();
-        //  this.cartProduct();
-        //  this.vat();
+          this.allCustomer();
+          this.cartProduct();
+        this.vat();
           Reload.$on('AfterAdd', ()=>{
            this.cartProduct();
           })
@@ -241,15 +288,19 @@
               photo :'',
               phone:'',
             },
-            errors:{},
+            customer_id:'',
+            pay:0,
+            due:0,
+            payby:'',
             products:[],
-            searchTerm:'',
-            searchTerm:'',
+            categories:'',
             getproducts:[],
+            searchTerm:'',
             getsearchTerm:'',
-            customers:'', 
-            categories:'',  
-            cards:[],     
+            customers:'',
+            errors:'',
+            cards:[],
+            vats:{} 
           }
         },
        computed:{
@@ -262,20 +313,53 @@
           return this.getproducts.filter(getproduct => {
              return getproduct.product_name.match(this.getsearchTerm)
            })
+         },
+          qty(){
+           let sum=0;
+           for(let i =0; i < this.cards.length; i++ ){
+              sum += (parseFloat(this.cards[i].pro_quantity));
+           }
+           return sum;
+         },
+         subtotal(){
+            return this.cards.reduce((sum,currentValue)=>{
+                 return sum+parseFloat(currentValue.pro_quantity)*parseFloat(currentValue.product_price);
+            },0)
+            
+         },
+         total(){
+            let sum = this.subtotal?this.subtotal:0;
+            let vat = this.vats?.vat ? this.vats.vat:0;
+            let pay_update = (sum*vat) /100 +sum;           
+            this.pay = pay_update;
+            return pay_update;
+         } ,
+         getDue(){
+             return this.due = this.total-this.pay;
          }
+
        },
         methods:{
           //cart methods here
           AddToCart(id){
             axios.get('/api/addTocart/'+id)
             .then(() => {
-            Reload.$emit('AfterAdd');
+             Reload.$emit('AfterAdd');
                Notification.cart_success()
+            })
+             .catch(error=>{
+              console.log(error.response.data)
+              if(error.response.status == 404){
+                Notification.custom(error.response.data,'error')
+              }
             })
           },
            cartProduct(){
              axios.get('/api/cart/product')
-            .then(({data}) => (this.cards = data))
+            .then(({data}) => {
+              this.cards = data;
+              this.pay = this.total;
+            })
             .catch()
            },
            removeItem(id){
@@ -285,34 +369,46 @@
                 Notification.success()
              })
            },
-          // increment(id){
-          //   axios.get('/api/increment/'+id)
-          //   .then(() => {
-          //      Reload.$emit('AfterAdd');
-          //      Notification.success()
-          //   })
-          // },
-          // decrement(id){
-          //   axios.get('/api/decrement/'+id)
-          //   .then(() => {
-          //      Reload.$emit('AfterAdd');
-          //      Notification.success()
-          //   })
-          // },
-          // vat(){
-          //   axios.get('/api/vats')
-          //    .then(({data}) => (this.vats = data))
-          //    .catch()
-          // },
-          // orderdone(){
-          //   let total = this.subtotal*this.vats.vat /100 +this.subtotal;
-          //   var data = {qty:this.qty, subtotal:this.subtotal, customer_id:this.customer_id, payby:this.payby, pay:this.pay, due:this.due, vat:this.vats.vat, total:total}
-          //   axios.post('/api/orderdone/',data)
-          //   .then(() => {
-          //      Notification.success()
-          //      this.$router.push({ name: 'home' })
-          //   })
-          // },
+          increment(id){
+            axios.get('/api/increment/'+id)
+            .then(({data}) => {
+               Reload.$emit('AfterAdd');
+               Notification.success()
+            })
+            .catch(error=>{
+              console.log(error.response.data)
+              if(error.response.status == 404){
+                Notification.custom(error.response.data,'error')
+              }
+            })
+          },
+          decrement(id){
+            axios.get('/api/decrement/'+id)
+            .then(() => {
+               Reload.$emit('AfterAdd');
+               Notification.success()
+            })
+          },
+          vat(){
+            axios.get('/api/vats')
+             .then(({data}) => (this.vats = data))
+             .catch()
+          },
+          orderdone(){
+            let total = this.subtotal*this.vats.vat /100 +this.subtotal;
+            let data = {qty:this.qty, subtotal:this.subtotal, customer_id:this.customer_id, payby:this.payby, pay:this.pay, due:this.due, vat:this.vats.vat, total:total}
+            axios.post('/api/orderdone/',data)
+            .then(() => {
+               Notification.success();
+               Reload.$emit('AfterAdd');
+               this.customer_id=null;
+               this.pay=0; 
+                this.due=0;
+               this.payby=""; 
+               this.allProduct()
+
+            })
+          },
           ///////////////////////////////////////////////////////////////////////////////////////////////////////
           //end cart methods
           allProduct(){
