@@ -48,6 +48,12 @@ let allSalary= require('../components/salary/allSalary.vue').default;
  let monthSalary = require('../components/salary/monthSalary.vue').default;
  let editSalary= require('../components/salary/editSalary.vue').default; 
 
+ //
+ let orders= require('../components/order/order.vue').default;
+ let vieworder = require('../components/order/vieworder.vue').default;
+let searchorder  = require('../components/order/search.vue').default;
+
+
 
 export const routes = [
     { path: '/', component:login,name:'/' },
@@ -103,6 +109,11 @@ export const routes = [
       { path: '/view-monthSalary/:id', component: monthSalary, name:'monthSalary' },
       { path: '/editSalary/:id', component:editSalary,name:'editSalary' }, 
   
-  
+     // Orders 
+     { path: '/orders', component:orders,name:'orders' },
+     { path: '/viewOrder/:id', component: vieworder, name:'viewOrder' },
+     { path: '/searchOrder', component: searchorder, name:'searchOrder' },
+
+
 
   ]

@@ -9,9 +9,6 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Models\Cart;
 use App\Models\OrderDetails;
-
-
-
 use Image;
 
 class PosController extends Controller
@@ -49,8 +46,8 @@ class PosController extends Controller
          
 
         $carts=Cart::all();
-
-
+         
+          
          foreach ($carts as $cart) {
 
         OrderDetails::create([   
@@ -58,7 +55,7 @@ class PosController extends Controller
             'product_id'   => $cart->pro_id,
             'pro_quantity'  => $cart->pro_quantity,
             'product_price'=> $cart->product_price,
-            'sub_total' => $order->total,
+            'sub_total' => $cart->pro_quantity * $cart->product_price,
             
 
         ]);

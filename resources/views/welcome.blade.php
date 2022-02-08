@@ -107,7 +107,7 @@
       </li>
       <li class="nav-item active">
 
-        <router-link class="nav-link" to="pos">
+        <router-link class="nav-link" :to="{name:'pos'}" >
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Pos</span>
         </router-link>
@@ -119,8 +119,8 @@
           <span>Employee</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <router-link class="dropdown-item" to="addEmployee">Add Employee</router-link>
-          <router-link class="dropdown-item" to="viewAllEmployee" >All Employee</router-link>
+          <router-link class="dropdown-item" :to="{name:'addEmployee'}">Add Employee</router-link>
+          <router-link class="dropdown-item" :to="{name:'viewAllEmployee'}" >All Employee</router-link>
          
         </div>
       </li>
@@ -130,8 +130,8 @@
           <span>Suppliers</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <router-link class="dropdown-item" to="addSupplier">Add Supplier</router-link>
-          <router-link class="dropdown-item" to="viewAllSupplier" >All Suppliers</router-link>
+          <router-link class="dropdown-item" :to="{name:'addSupplier'}" >Add Supplier</router-link>
+          <router-link class="dropdown-item" :to="{name:'viewAllSupplier'}"  >All Suppliers</router-link>
          
         </div>
       </li>
@@ -141,8 +141,8 @@
           <span>Customer</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <router-link class="dropdown-item" to="addCustomer">Add Customer</router-link>
-          <router-link class="dropdown-item" to="viewAllCustomer" >All Customer</router-link>
+          <router-link class="dropdown-item" :to="{name:'addCustomer'}" >Add Customer</router-link>
+          <router-link class="dropdown-item" :to="{name:'viewAllCustomer'}"  >All Customer</router-link>
          
         </div>
       </li>
@@ -153,8 +153,8 @@
           <span>Category</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <router-link class="dropdown-item" to="addCategory">Add Category</router-link>
-          <router-link class="dropdown-item" to="viewAllCategory" >All Category</router-link>
+          <router-link class="dropdown-item" :to="{name:'addCategory'}">Add Category</router-link>
+          <router-link class="dropdown-item" :to="{name:'viewAllCategory'}"  >All Category</router-link>
          
         </div>
       </li>
@@ -164,10 +164,17 @@
           <span>Products</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <router-link class="dropdown-item" to="addProduct">Add Product</router-link>
-          <router-link class="dropdown-item" to="viewAllProduct" >All Products</router-link>
+          <router-link class="dropdown-item" :to="{name:'addProduct'}">Add Product</router-link>
+          <router-link class="dropdown-item" :to="{name:'viewAllProduct'}"  >All Products</router-link>
          
         </div>
+      </li>
+
+      <li class="nav-item">
+        <router-link  class="nav-link" to="#">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Reports</span></a>
+        </router-link>
       </li>
 
       <li class="nav-item dropdown">
@@ -176,8 +183,8 @@
           <span>Expense</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <router-link class="dropdown-item" to="addExpense">Add Expense</router-link>
-          <router-link class="dropdown-item" to="TodayExpense">All Expense</router-link>
+          <router-link class="dropdown-item" :to="{name:'addExpense'}">Add Expense</router-link>
+          <router-link class="dropdown-item" :to="{name:'TodayExpense'}">All Expense</router-link>
          
         </div>
       </li>
@@ -188,13 +195,13 @@
           <span>Salary</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <router-link class="dropdown-item" to="/addSalary">Pay Salary</router-link>
-          <router-link class="dropdown-item" to="/allSalary">All Salary</router-link>
+          <router-link class="dropdown-item" :to="{name:'addSalary'}">Pay Salary</router-link>
+          <router-link class="dropdown-item" :to="{name:'allSalary'}" >All Salary</router-link>
         </div>
       </li>
 
       <li class="nav-item">
-        <router-link  class="nav-link" to="/stock">
+        <router-link  class="nav-link" :to="{name:'stock'}" >
           <i class="fas fa-fw fa-table"></i>
           <span>Stock</span></a>
         </router-link>
@@ -206,20 +213,32 @@
           <span>Vat</span></a>
         </router-link>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Orders</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <router-link class="dropdown-item" :to="{name:'orders'}" >Today Order</router-link>
+          <router-link class="dropdown-item" :to="{name:'searchOrder'}">Search</router-link>
+         
+        </div>
+      </li>
+      <li class="nav-item">
+        <router-link  class="nav-link" :to="{name:'settings'}" >
+          <i class="fas fa-fw fa-table"></i>
+          <span>Settings</span></a>
+        </router-link>
+      </li>
+
     </ul>
 
     <div id="content-wrapper">
 
         <div class="container-fluid">
-
-       {{-- ############################################################################### --}}
-
-       <router-view></router-view>
-
-
-              {{-- ############################################################################### --}}
-
-
+          {{-- ############################################################################### --}}
+          <router-view></router-view>
+          {{-- ############################################################################### --}}
       </div>
       <!-- /.container-fluid -->
 

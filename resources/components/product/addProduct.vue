@@ -3,7 +3,7 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-           <router-link to="/home"  id="home"> Dashboard</router-link>
+           <router-link :to="{name:'home'}"   id="home"> Dashboard</router-link>
           </li>
           <li class="breadcrumb-item active">Product</li>
         </ol>

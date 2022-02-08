@@ -12,6 +12,10 @@ use App\Http\Controllers\api\ExpensesController;
 use App\Http\Controllers\api\SalaryController;
 use App\Http\Controllers\api\CartController;
 use App\Http\Controllers\api\PosController;
+use App\Http\Controllers\api\OrderController;
+use App\Http\Controllers\api\HomeController;
+
+
 
 
 Route::group([
@@ -74,15 +78,36 @@ Route::get('/increment/{id}',[CartController::class,'Increment']);
 Route::get('/decrement/{id}',[CartController::class,'decrement']);
 Route::get('/vats',[CartController::class,'Vats']);
 
-
 Route::post('/orderdone',[PosController::class,'OrderDone']);
 
+//order Controller
+Route::get('/orders',[OrderController::class,'TodayOrder']);
+Route::get('/order/details/{id}',[OrderController::class,'OrderDetails']);
+Route::get('/order/orderdetails/{id}',[OrderController::class,'OrderDetailsAll']);
 
-// Route::get('/orders','Api\OrderController@TodayOrder');
-// Route::get('/order/details/{id}','Api\OrderController@OrderDetails');
-// Route::get('/order/orderdetails/{id}','Api\OrderController@OrderDetailsAll');
-// Route::post('/search/order/','Api\OrderController@SearchOrderDate');
-// Route::post('/search/month/','Api\OrderController@SearchMonth');
+Route::post('/search/date/',[OrderController::class,'SearchOrderDate']);
+Route::post('/search/month/',[OrderController::class,'SearchMonth']);
+
+//Home Controller  HomeController  
+
+Route::get('/today/sell/',[HomeController::class,'TodaySell']);
+Route::get('/today/income/',[HomeController::class,'TodayIncome']);
+Route::get('/today/due/',[HomeController::class,'TodayDue']);
+Route::get('/today/expense/',[HomeController::class,'TodayExpense']);
+Route::get('/stockOutProducts',[HomeController::class,'StockOut']);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
