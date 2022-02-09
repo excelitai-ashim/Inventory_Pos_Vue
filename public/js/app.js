@@ -2445,19 +2445,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        category_name: ''
+        category_name: ""
       },
       errors: {}
     };
@@ -2466,11 +2483,11 @@ __webpack_require__.r(__webpack_exports__);
     categoryInsert: function categoryInsert() {
       var _this = this;
 
-      axios.post('/api/category/', this.form).then(function () {
+      axios.post("/api/category/", this.form).then(function () {
         Notification.success();
 
         _this.$router.push({
-          name: 'viewAllCategory'
+          name: "viewAllCategory"
         });
       })["catch"](function (error) {
         return _this.errors = error.response.data.errors;
@@ -2544,19 +2561,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mounted$data$mounted = {
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        category_name: ''
+        category_name: ""
       },
       errors: {}
     };
@@ -2565,10 +2599,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   var _this = this;
 
   var id = this.$route.params.id;
-  axios.get('/api/category/' + id).then(function (_ref) {
+  axios.get("/api/category/" + id).then(function (_ref) {
     var data = _ref.data;
     return _this.form = data;
-  })["catch"](console.log('error'));
+  })["catch"](console.log("error"));
 }), _defineProperty(_mounted$data$mounted, "methods", {
   categoryUpdate: function categoryUpdate() {
     var _this2 = this;
@@ -2580,11 +2614,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append(i, this.form[i]);
     }
 
-    axios.post('/api/category/' + id + '/update/', formData).then(function () {
+    axios.post("/api/category/" + id + "/update/", formData).then(function () {
       Notification.success();
 
       _this2.$router.push({
-        name: 'viewAllCategory'
+        name: "viewAllCategory"
       });
     })["catch"](function (error) {
       console.log(error.response);
@@ -2682,11 +2716,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
@@ -2706,7 +2755,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this.categorys = {};
                 _context.next = 3;
-                return axios.get('/api/category/').then(function (_ref) {
+                return axios.get("/api/category/").then(function (_ref) {
                   var data = _ref.data;
                   return _this.categorys = data;
                 })["catch"](function (err) {
@@ -2715,7 +2764,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 $(document).ready(function () {
-                  $('#dataTable').DataTable();
+                  $("#dataTable").DataTable();
                 });
 
               case 4:
@@ -2731,25 +2780,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       console.log(id);
       Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
       }).then(function (result) {
         if (result.isConfirmed) {
-          axios["delete"]('api/category/' + id).then(function () {
+          axios["delete"]("api/category/" + id).then(function () {
             //  this.employees=this.employees.filter(employee=>{
             //    return employee.id !=id
             //  })
             _this2.allCategorys();
 
-            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
           })["catch"](function () {
             _this2.$route.push({
-              name: 'viewAllCategory'
+              name: "viewAllCategory"
             });
           });
         }
@@ -2860,23 +2909,64 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        name: '',
-        email: '',
-        address: '',
-        photo: '',
-        phone: ''
+        name: "",
+        email: "",
+        address: "",
+        photo: "",
+        phone: ""
       },
       errors: {}
     };
@@ -2903,11 +2993,11 @@ __webpack_require__.r(__webpack_exports__);
     customerInsert: function customerInsert() {
       var _this2 = this;
 
-      axios.post('/api/customer/', this.form).then(function () {
+      axios.post("/api/customer/", this.form).then(function () {
         Notification.success();
 
         _this2.$router.push({
-          name: 'viewAllCustomer'
+          name: "viewAllCustomer"
         });
       })["catch"](function (error) {
         return _this2.errors = error.response.data.errors;
@@ -3017,23 +3107,74 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mounted$data$mounted = {
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        name: '',
-        email: '',
-        address: '',
-        photo: '',
-        phone: ''
+        name: "",
+        email: "",
+        address: "",
+        photo: "",
+        phone: ""
       },
       newImage: "",
       errors: {}
@@ -3043,10 +3184,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   var _this = this;
 
   var id = this.$route.params.id;
-  axios.get('/api/customer/' + id).then(function (_ref) {
+  axios.get("/api/customer/" + id).then(function (_ref) {
     var data = _ref.data;
     return _this.form = data;
-  })["catch"](console.log('error'));
+  })["catch"](console.log("error"));
 }), _defineProperty(_mounted$data$mounted, "methods", {
   onFileselected: function onFileselected(event) {
     var _this2 = this;
@@ -3077,11 +3218,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append(i, this.form[i]);
     }
 
-    axios.post('/api/customer/' + id + '/update', formData).then(function () {
+    axios.post("/api/customer/" + id + "/update", formData).then(function () {
       Notification.success();
 
       _this3.$router.push({
-        name: 'viewAllCustomer'
+        name: "viewAllCustomer"
       });
     })["catch"](function (error) {
       console.log(error);
@@ -3189,11 +3330,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
@@ -3212,7 +3367,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get('/api/customer/').then(function (_ref) {
+                return axios.get("/api/customer/").then(function (_ref) {
                   var data = _ref.data;
                   return _this.customers = data;
                 })["catch"](function (err) {
@@ -3221,7 +3376,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 $(document).ready(function () {
-                  $('#dataTable').DataTable();
+                  $("#dataTable").DataTable();
                 });
 
               case 3:
@@ -3237,25 +3392,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       console.log(id);
       Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
       }).then(function (result) {
         if (result.isConfirmed) {
-          axios["delete"]('api/customer/' + id).then(function () {
+          axios["delete"]("api/customer/" + id).then(function () {
             //  this.employees=this.employees.filter(employee=>{
             //    return employee.id !=id
             //  })
             _this2.allCustomer();
 
-            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
           })["catch"](function () {
             _this2.$route.push({
-              name: 'viewAllCustomer'
+              name: "viewAllCustomer"
             });
           });
         }
@@ -3388,26 +3543,90 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        name: '',
-        email: '',
-        salary: '',
-        address: '',
-        photo: '',
-        phone: '',
-        nid: '',
-        joining_date: ''
+        name: "",
+        email: "",
+        salary: "",
+        address: "",
+        photo: "",
+        phone: "",
+        nid: "",
+        joining_date: ""
       },
       errors: {}
     };
@@ -3434,11 +3653,11 @@ __webpack_require__.r(__webpack_exports__);
     employeeInsert: function employeeInsert() {
       var _this2 = this;
 
-      axios.post('/api/employee/', this.form).then(function () {
+      axios.post("/api/employee/", this.form).then(function () {
         Notification.success();
 
         _this2.$router.push({
-          name: 'viewAllEmployee'
+          name: "viewAllEmployee"
         });
       })["catch"](function (error) {
         return _this2.errors = error.response.data.errors;
@@ -3574,26 +3793,97 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mounted$data$mounted = {
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        name: '',
-        email: '',
-        salary: '',
-        address: '',
-        photo: '',
-        phone: '',
-        nid: '',
-        joining_date: ''
+        name: "",
+        email: "",
+        salary: "",
+        address: "",
+        photo: "",
+        phone: "",
+        nid: "",
+        joining_date: ""
       },
       newImage: "",
       errors: {}
@@ -3603,10 +3893,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   var _this = this;
 
   var id = this.$route.params.id;
-  axios.get('/api/employee/' + id).then(function (_ref) {
+  axios.get("/api/employee/" + id).then(function (_ref) {
     var data = _ref.data;
     return _this.form = data;
-  })["catch"](console.log('error'));
+  })["catch"](console.log("error"));
 }), _defineProperty(_mounted$data$mounted, "methods", {
   onFileselected: function onFileselected(event) {
     var _this2 = this;
@@ -3637,11 +3927,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append(i, this.form[i]);
     }
 
-    axios.post('/api/employee/' + id + '/update', formData).then(function () {
+    axios.post("/api/employee/" + id + "/update", formData).then(function () {
       Notification.success();
 
       _this3.$router.push({
-        name: 'viewAllEmployee'
+        name: "viewAllEmployee"
       });
     })["catch"](function (error) {
       console.log(error);
@@ -3750,11 +4040,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
@@ -3774,7 +4080,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this.employees = {};
                 _context.next = 3;
-                return axios.get('/api/employee/').then(function (_ref) {
+                return axios.get("/api/employee/").then(function (_ref) {
                   var data = _ref.data;
                   return _this.employees = data;
                 })["catch"](function (err) {
@@ -3783,7 +4089,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 $(document).ready(function () {
-                  $('#dataTable').DataTable();
+                  $("#dataTable").DataTable();
                 });
 
               case 4:
@@ -3799,25 +4105,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       console.log(id);
       Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
       }).then(function (result) {
         if (result.isConfirmed) {
-          axios["delete"]('api/employee/' + id).then(function () {
+          axios["delete"]("api/employee/" + id).then(function () {
             //  this.employees=this.employees.filter(employee=>{
             //    return employee.id !=id
             //  })
             _this2.allEmployes();
 
-            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
           })["catch"](function () {
             _this2.$route.push({
-              name: 'vewAllEmployee'
+              name: "vewAllEmployee"
             });
           });
         }
@@ -3919,11 +4225,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
@@ -3945,7 +4264,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get('/api/expense/').then(function (_ref) {
+                return axios.get("/api/expense/").then(function (_ref) {
                   var data = _ref.data;
                   console.log(_this);
                   _this.expenses = data;
@@ -3955,7 +4274,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 console.log(_this.expenses);
-                $('#dataTable').DataTable();
+                $("#dataTable").DataTable();
 
               case 4:
               case "end":
@@ -3969,23 +4288,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        type: 'warning',
+        type: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
       }).then(function (result) {
         if (result.value) {
-          axios["delete"]('/api/expense/' + id).then(function () {
+          axios["delete"]("/api/expense/" + id).then(function () {
             _this2.allExpense();
           })["catch"](function () {
             _this2.$router.push({
-              name: 'expense'
+              name: "expense"
             });
           });
-          Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
         }
       });
     }
@@ -4052,20 +4371,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        details: '',
-        amount: ''
+        details: "",
+        amount: ""
       },
       errors: {}
     };
@@ -4074,11 +4415,11 @@ __webpack_require__.r(__webpack_exports__);
     expenseInsert: function expenseInsert() {
       var _this = this;
 
-      axios.post('/api/expense/', this.form).then(function () {
+      axios.post("/api/expense/", this.form).then(function () {
         Notification.success();
 
         _this.$router.push({
-          name: 'TodayExpense'
+          name: "TodayExpense"
         });
       })["catch"](function (error) {
         return _this.errors = error.response.data.errors;
@@ -4156,20 +4497,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mounted$data$mounted = {
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        details: '',
-        amount: ''
+        details: "",
+        amount: ""
       },
       errors: {}
     };
@@ -4178,10 +4541,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   var _this = this;
 
   var id = this.$route.params.id;
-  axios.get('/api/expense/' + id).then(function (_ref) {
+  axios.get("/api/expense/" + id).then(function (_ref) {
     var data = _ref.data;
     return _this.form = data;
-  })["catch"](console.log('error'));
+  })["catch"](console.log("error"));
 }), _defineProperty(_mounted$data$mounted, "methods", {
   expenseUpdate: function expenseUpdate() {
     var _this2 = this;
@@ -4193,11 +4556,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append(i, this.form[i]);
     }
 
-    axios.post('/api/expense/' + id + '/update', formData).then(function () {
+    axios.post("/api/expense/" + id + "/update", formData).then(function () {
       Notification.success();
 
       _this2.$router.push({
-        name: 'TodayExpense'
+        name: "TodayExpense"
       });
     })["catch"](function (error) {
       console.log(error);
@@ -4548,7 +4911,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
@@ -4571,7 +4934,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get('/api/orders/').then(function (_ref) {
+                return axios.get("/api/orders/").then(function (_ref) {
                   var data = _ref.data;
                   console.log(_this);
                   _this.orders = data;
@@ -4581,7 +4944,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 console.log(_this.expenses);
-                $('#dataTable').DataTable();
+                $("#dataTable").DataTable();
 
               case 4:
               case "end":
@@ -4740,19 +5103,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        date: '',
-        month: ''
+        date: "",
+        month: ""
       },
       errors: {},
       orders: {}
@@ -4763,9 +5147,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var date = {
-        date: this.date
+        date: this.form.date
       };
-      axios.post('/api/search/date', date).then(function (_ref) {
+      axios.post("/api/search/date", date).then(function (_ref) {
         var data = _ref.data;
         _this.orders = data;
       })["catch"](function (error) {
@@ -4776,10 +5160,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var month = {
-        month: this.month
+        month: this.form.month
       };
-      axios.post('/api/search/month', month).then(function () {// this.$router.push({ name: 'category' })
-        // Notification.success()
+      axios.post("/api/search/month", month).then(function (_ref2) {
+        var data = _ref2.data;
+        _this2.orders = data;
       })["catch"](function (error) {
         return _this2.errors = error.response.data.errors;
       });
@@ -5219,11 +5604,222 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
@@ -5236,32 +5832,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.allCustomer();
     this.cartProduct();
     this.vat();
-    Reload.$on('AfterAdd', function () {
+    Reload.$on("AfterAdd", function () {
       _this.cartProduct();
     });
   },
   data: function data() {
     return {
       form: {
-        details: '',
-        amount: '',
-        name: '',
-        email: '',
-        address: '',
-        photo: '',
-        phone: ''
+        details: "",
+        amount: "",
+        name: "",
+        email: "",
+        address: "",
+        photo: "",
+        phone: ""
       },
-      customer_id: '',
+      customer_id: "",
       pay: 0,
       due: 0,
-      payby: '',
+      payby: "",
       products: [],
-      categories: '',
+      categories: "",
       getproducts: [],
-      searchTerm: '',
-      getsearchTerm: '',
-      customers: '',
-      errors: '',
+      searchTerm: "",
+      getsearchTerm: "",
+      customers: "",
+      errors: "",
       cards: [],
       vats: {}
     };
@@ -5311,55 +5907,55 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: (_methods = {
     //cart methods here
     AddToCart: function AddToCart(id) {
-      axios.get('/api/addTocart/' + id).then(function () {
-        Reload.$emit('AfterAdd');
+      axios.get("/api/addTocart/" + id).then(function () {
+        Reload.$emit("AfterAdd");
         Notification.cart_success();
       })["catch"](function (error) {
         console.log(error.response.data);
 
         if (error.response.status == 404) {
-          Notification.custom(error.response.data, 'error');
+          Notification.custom(error.response.data, "error");
         }
       });
     },
     cartProduct: function cartProduct() {
       var _this4 = this;
 
-      axios.get('/api/cart/product').then(function (_ref) {
+      axios.get("/api/cart/product").then(function (_ref) {
         var data = _ref.data;
         _this4.cards = data;
         _this4.pay = _this4.total;
       })["catch"]();
     },
     removeItem: function removeItem(id) {
-      axios.get('/api/remove/cart/' + id).then(function () {
-        Reload.$emit('AfterAdd');
+      axios.get("/api/remove/cart/" + id).then(function () {
+        Reload.$emit("AfterAdd");
         Notification.success();
       });
     },
     increment: function increment(id) {
-      axios.get('/api/increment/' + id).then(function (_ref2) {
+      axios.get("/api/increment/" + id).then(function (_ref2) {
         var data = _ref2.data;
-        Reload.$emit('AfterAdd');
+        Reload.$emit("AfterAdd");
         Notification.success();
       })["catch"](function (error) {
         console.log(error.response.data);
 
         if (error.response.status == 404) {
-          Notification.custom(error.response.data, 'error');
+          Notification.custom(error.response.data, "error");
         }
       });
     },
     decrement: function decrement(id) {
-      axios.get('/api/decrement/' + id).then(function () {
-        Reload.$emit('AfterAdd');
+      axios.get("/api/decrement/" + id).then(function () {
+        Reload.$emit("AfterAdd");
         Notification.success();
       });
     },
     vat: function vat() {
       var _this5 = this;
 
-      axios.get('/api/vats').then(function (_ref3) {
+      axios.get("/api/vats").then(function (_ref3) {
         var data = _ref3.data;
         return _this5.vats = data;
       })["catch"]();
@@ -5378,9 +5974,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         vat: this.vats.vat,
         total: total
       };
-      axios.post('/api/orderdone/', data).then(function () {
+      axios.post("/api/orderdone/", data).then(function () {
         Notification.success();
-        Reload.$emit('AfterAdd');
+        Reload.$emit("AfterAdd");
         _this6.customer_id = null;
         _this6.pay = 0;
         _this6.due = 0;
@@ -5394,7 +5990,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     allProduct: function allProduct() {
       var _this7 = this;
 
-      axios.get('/api/product/').then(function (_ref4) {
+      axios.get("/api/product/").then(function (_ref4) {
         var data = _ref4.data;
         return _this7.products = data;
       })["catch"]();
@@ -5402,7 +5998,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     subproduct: function subproduct(id) {
       var _this8 = this;
 
-      axios.get('/api/getting/product/' + id).then(function (_ref5) {
+      axios.get("/api/getting/product/" + id).then(function (_ref5) {
         var data = _ref5.data;
         console.log(data);
         _this8.getproducts = data;
@@ -5431,28 +6027,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }, _defineProperty(_methods, "allProduct", function allProduct() {
     var _this10 = this;
 
-    axios.get('/api/product').then(function (_ref6) {
+    axios.get("/api/product").then(function (_ref6) {
       var data = _ref6.data;
       return _this10.products = data;
     })["catch"]();
   }), _defineProperty(_methods, "allCategory", function allCategory() {
     var _this11 = this;
 
-    axios.get('/api/category/').then(function (_ref7) {
+    axios.get("/api/category/").then(function (_ref7) {
       var data = _ref7.data;
       return _this11.categories = data;
     })["catch"]();
   }), _defineProperty(_methods, "allCustomer", function allCustomer() {
     var _this12 = this;
 
-    axios.get('/api/customer/').then(function (_ref8) {
+    axios.get("/api/customer/").then(function (_ref8) {
       var data = _ref8.data;
       return _this12.customers = data;
-    })["catch"](console.log('error'));
+    })["catch"](console.log("error"));
   }), _defineProperty(_methods, "subproduct", function subproduct(id) {
     var _this13 = this;
 
-    axios.get('/api/getting/product/' + id).then(function (_ref9) {
+    axios.get("/api/getting/product/" + id).then(function (_ref9) {
       var data = _ref9.data;
       return _this13.getproducts = data;
     })["catch"](function (error) {
@@ -5461,8 +6057,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }), _defineProperty(_methods, "customerInsert", function customerInsert() {
     var _this14 = this;
 
-    axios.post('/api/customer/', this.form).then(function () {
-      $('#closeModal').click();
+    axios.post("/api/customer/", this.form).then(function () {
+      $("#closeModal").click();
       Notification.success();
       _this14.customers = _this14.customers.filter(function (customer) {
         return customer.id != id;
@@ -5614,27 +6210,116 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        product_name: '',
-        product_code: '',
-        category_id: '',
-        supplier_id: '',
-        root: '',
-        buying_price: '',
-        selling_price: '',
-        buying_date: '',
-        image: '',
-        product_quantity: ''
+        product_name: "",
+        product_code: "",
+        category_id: "",
+        supplier_id: "",
+        root: "",
+        buying_price: "",
+        selling_price: "",
+        buying_date: "",
+        image: "",
+        product_quantity: ""
       },
       errors: {},
       categories: {},
@@ -5662,9 +6347,9 @@ __webpack_require__.r(__webpack_exports__);
     productInsert: function productInsert() {
       var _this2 = this;
 
-      axios.post('/api/product/', this.form).then(function () {
+      axios.post("/api/product/", this.form).then(function () {
         _this2.$router.push({
-          name: 'viewAllProduct'
+          name: "viewAllProduct"
         });
 
         Notification.success();
@@ -5676,11 +6361,11 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this3 = this;
 
-    axios.get('/api/category').then(function (_ref) {
+    axios.get("/api/category").then(function (_ref) {
       var data = _ref.data;
       return _this3.categories = data;
     });
-    axios.get('/api/supplier/').then(function (_ref2) {
+    axios.get("/api/supplier/").then(function (_ref2) {
       var data = _ref2.data;
       return _this3.suppliers = data;
     });
@@ -5836,29 +6521,125 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mounted$data$mounted = {
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        product_name: '',
-        product_code: '',
-        category_id: '',
-        supplier_id: '',
-        root: '',
-        buying_price: '',
-        selling_price: '',
-        buying_date: '',
-        image: '',
-        newphoto: '',
-        product_quantity: ''
+        product_name: "",
+        product_code: "",
+        category_id: "",
+        supplier_id: "",
+        root: "",
+        buying_price: "",
+        selling_price: "",
+        buying_date: "",
+        image: "",
+        newphoto: "",
+        product_quantity: ""
       },
       newImage: "",
       errors: {},
@@ -5870,15 +6651,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   var _this = this;
 
   var id = this.$route.params.id;
-  axios.get('/api/product/' + id).then(function (_ref) {
+  axios.get("/api/product/" + id).then(function (_ref) {
     var data = _ref.data;
     return _this.form = data;
-  })["catch"](console.log('error'));
-  axios.get('/api/category').then(function (_ref2) {
+  })["catch"](console.log("error"));
+  axios.get("/api/category").then(function (_ref2) {
     var data = _ref2.data;
     return _this.categories = data;
   });
-  axios.get('/api/supplier/').then(function (_ref3) {
+  axios.get("/api/supplier/").then(function (_ref3) {
     var data = _ref3.data;
     return _this.suppliers = data;
   });
@@ -5912,11 +6693,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append(i, this.form[i]);
     }
 
-    axios.post('/api/product/' + id + '/update', formData).then(function () {
+    axios.post("/api/product/" + id + "/update", formData).then(function () {
       Notification.success();
 
       _this3.$router.push({
-        name: 'viewAllProduct'
+        name: "viewAllProduct"
       });
     })["catch"](function (error) {
       console.log(error);
@@ -6002,21 +6783,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mounted$data$mounted = {
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        product_name: '',
-        image: '',
-        product_quantity: ''
+        product_name: "",
+        image: "",
+        product_quantity: ""
       },
       errors: {}
     };
@@ -6025,10 +6827,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   var _this = this;
 
   var id = this.$route.params.id;
-  axios.get('/api/product/' + id).then(function (_ref) {
+  axios.get("/api/product/" + id).then(function (_ref) {
     var data = _ref.data;
     return _this.form = data;
-  })["catch"](console.log('error'));
+  })["catch"](console.log("error"));
 }), _defineProperty(_mounted$data$mounted, "methods", {
   StockUpdate: function StockUpdate() {
     var _this2 = this;
@@ -6040,11 +6842,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append(i, this.form[i]);
     }
 
-    axios.post('/api/stock/update/' + id, formData).then(function () {
+    axios.post("/api/stock/update/" + id, formData).then(function () {
       Notification.success();
 
       _this2.$router.push({
-        name: 'stock'
+        name: "stock"
       });
     })["catch"](function (error) {
       console.log(error);
@@ -6157,11 +6959,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
@@ -6181,7 +6991,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this.products = {};
                 _context.next = 3;
-                return axios.get('/api/product/').then(function (_ref) {
+                return axios.get("/api/product/").then(function (_ref) {
                   var data = _ref.data;
                   return _this.products = data;
                 })["catch"](function (err) {
@@ -6190,7 +7000,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 $(document).ready(function () {
-                  $('#dataTable').DataTable();
+                  $("#dataTable").DataTable();
                 });
 
               case 4:
@@ -6308,11 +7118,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
@@ -6332,7 +7162,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this.products = {};
                 _context.next = 3;
-                return axios.get('/api/product/').then(function (_ref) {
+                return axios.get("/api/product/").then(function (_ref) {
                   var data = _ref.data;
                   return _this.products = data;
                 })["catch"](function (err) {
@@ -6341,7 +7171,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 $(document).ready(function () {
-                  $('#dataTable').DataTable();
+                  $("#dataTable").DataTable();
                 });
 
               case 4:
@@ -6357,25 +7187,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       console.log(id);
       Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
       }).then(function (result) {
         if (result.isConfirmed) {
-          axios["delete"]('api/product/' + id).then(function () {
+          axios["delete"]("api/product/" + id).then(function () {
             //  this.employees=this.employees.filter(employee=>{
             //    return employee.id !=id
             //  })
             _this2.allProducts();
 
-            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
           })["catch"](function () {
             _this2.$route.push({
-              name: 'viewAllProduct'
+              name: "viewAllProduct"
             });
           });
         }
@@ -6474,11 +7304,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
 
@@ -6502,14 +7344,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get('/api/employee/').then(function (_ref) {
+                return axios.get("/api/employee/").then(function (_ref) {
                   var data = _ref.data;
                   return _this.employees = data;
                 })["catch"]();
 
               case 2:
                 $(document).ready(function () {
-                  $('#dataTable').DataTable();
+                  $("#dataTable").DataTable();
                 });
 
               case 3:
@@ -6607,11 +7449,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
@@ -6630,7 +7484,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get('/api/allSalary').then(function (_ref) {
+                return axios.get("/api/allSalary").then(function (_ref) {
                   var data = _ref.data;
                   _this.salaries = data;
                   console.log(data);
@@ -6640,7 +7494,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 $(document).ready(function () {
-                  $('#dataTable').DataTable();
+                  $("#dataTable").DataTable();
                 });
 
               case 3:
@@ -6749,8 +7603,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['id'],
+  props: ["id"],
   mounted: function mounted() {
     var _this = this;
 
@@ -6758,13 +7652,13 @@ __webpack_require__.r(__webpack_exports__);
 
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
 
     var id = this.$route.params.id;
     console.log(id);
-    axios.get('/api/employee/' + id).then(function (_ref) {
+    axios.get("/api/employee/" + id).then(function (_ref) {
       var data = _ref.data;
       return _this.form = data;
     })["catch"]();
@@ -6772,10 +7666,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: {
-        name: '',
-        email: '',
-        salary: '',
-        salary_month: ''
+        name: "",
+        email: "",
+        salary: "",
+        salary_month: ""
       },
       errors: {}
     };
@@ -6785,11 +7679,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var id = this.$route.params.id;
-      axios.post('/api/salary/paid/' + id, this.form).then(function (res) {
+      axios.post("/api/salary/paid/" + id, this.form).then(function (res) {
         var return_message = res.data;
 
         _this2.$router.push({
-          name: 'addSalary'
+          name: "addSalary"
         });
 
         if (return_message) {
@@ -6899,22 +7793,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        name: '',
-        email: '',
-        amount: '',
-        salary_month: '',
-        employee_id: ''
+        name: "",
+        email: "",
+        amount: "",
+        salary_month: "",
+        employee_id: ""
       },
       errors: {}
     };
@@ -6923,7 +7843,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var id = this.$route.params.id;
-    axios.get('/api/editSalary/' + id).then(function (_ref) {
+    axios.get("/api/editSalary/" + id).then(function (_ref) {
       var data = _ref.data;
       _this.form.name = data.employee.name;
       _this.form.email = data.employee.email;
@@ -6940,9 +7860,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var id = this.$route.params.id;
-      axios.post('/api/salary/update/' + id, this.form).then(function () {
+      axios.post("/api/salary/update/" + id, this.form).then(function () {
         _this2.$router.push({
-          name: 'allSalary'
+          name: "allSalary"
         });
 
         Notification.success();
@@ -7043,11 +7963,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
@@ -7068,7 +7997,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 id = _this.$route.params.id;
                 _context.next = 3;
-                return axios.get('/api/monthSalary/' + id).then(function (_ref) {
+                return axios.get("/api/monthSalary/" + id).then(function (_ref) {
                   var data = _ref.data;
                   return _this.salaryes = data;
                 })["catch"](function (err) {
@@ -7077,7 +8006,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 $(document).ready(function () {
-                  $('#dataTable').DataTable();
+                  $("#dataTable").DataTable();
                 });
 
               case 4:
@@ -7093,25 +8022,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       console.log(id);
       Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
       }).then(function (result) {
         if (result.isConfirmed) {
-          axios["delete"]('api/employee/' + id).then(function () {
+          axios["delete"]("api/employee/" + id).then(function () {
             //  this.employees=this.employees.filter(employee=>{
             //    return employee.id !=id
             //  })
             _this2.allEmployes();
 
-            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
           })["catch"](function () {
             _this2.$route.push({
-              name: 'vewAllEmployee'
+              name: "vewAllEmployee"
             });
           });
         }
@@ -7233,24 +8162,73 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        name: '',
-        email: '',
-        address: '',
-        photo: '',
-        phone: '',
-        shopName: ''
+        name: "",
+        email: "",
+        address: "",
+        photo: "",
+        phone: "",
+        shopName: ""
       },
       errors: {}
     };
@@ -7277,11 +8255,11 @@ __webpack_require__.r(__webpack_exports__);
     supplierInsert: function supplierInsert() {
       var _this2 = this;
 
-      axios.post('/api/supplier/', this.form).then(function () {
+      axios.post("/api/supplier/", this.form).then(function () {
         Notification.success();
 
         _this2.$router.push({
-          name: 'viewAllSupplier'
+          name: "viewAllSupplier"
         });
       })["catch"](function (error) {
         return _this2.errors = error.response.data.errors;
@@ -7405,24 +8383,78 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_mounted$data$mounted = {
   mounted: function mounted() {
     // console.log(User);
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
   data: function data() {
     return {
       form: {
-        name: '',
-        email: '',
-        address: '',
-        photo: '',
-        phone: '',
-        shopName: ''
+        name: "",
+        email: "",
+        address: "",
+        photo: "",
+        phone: "",
+        shopName: ""
       },
       newImage: "",
       errors: {}
@@ -7432,10 +8464,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   var _this = this;
 
   var id = this.$route.params.id;
-  axios.get('/api/supplier/' + id).then(function (_ref) {
+  axios.get("/api/supplier/" + id).then(function (_ref) {
     var data = _ref.data;
     return _this.form = data;
-  })["catch"](console.log('error'));
+  })["catch"](console.log("error"));
 }), _defineProperty(_mounted$data$mounted, "methods", {
   onFileselected: function onFileselected(event) {
     var _this2 = this;
@@ -7466,11 +8498,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append(i, this.form[i]);
     }
 
-    axios.post('/api/supplier/' + id + '/update', formData).then(function () {
+    axios.post("/api/supplier/" + id + "/update", formData).then(function () {
       Notification.success();
 
       _this3.$router.push({
-        name: 'viewAllSupplier'
+        name: "viewAllSupplier"
       });
     })["catch"](function (error) {
       console.log(error.response);
@@ -7579,11 +8611,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
       this.$router.push({
-        name: '/'
+        name: "/"
       });
     }
   },
@@ -7603,14 +8651,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this.Suppliers = {};
                 _context.next = 3;
-                return axios.get('/api/supplier').then(function (_ref) {
+                return axios.get("/api/supplier").then(function (_ref) {
                   var data = _ref.data;
                   return _this.Suppliers = data;
                 })["catch"]();
 
               case 3:
                 $(document).ready(function () {
-                  $('#dataTable').DataTable();
+                  $("#dataTable").DataTable();
                 });
 
               case 4:
@@ -7626,22 +8674,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       console.log(id);
       Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
       }).then(function (result) {
         if (result.isConfirmed) {
-          axios["delete"]('api/supplier/' + id).then(function () {
+          axios["delete"]("api/supplier/" + id).then(function () {
             //  this.employees=this.employees.filter(employee=>{
             //    return employee.id !=id
             //  })
             _this2.allSuppliers();
 
-            Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
           })["catch"](function () {
             _this2.$route.push({
               name: vewAllEmployee
@@ -8312,7 +9360,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\n.card_center {\r\n        margin: 0 auto; /* Added */\r\n        float: none; /* Added */\r\n        margin-bottom: 5px; /* Added */\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\n.card_center {\r\n  margin: 0 auto; /* Added */\r\n  float: none; /* Added */\r\n  margin-bottom: 5px; /* Added */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8336,7 +9384,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8360,7 +9408,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo{\n    height: 80px;\n    width: 100px;\n}\n.card {\n        margin: 0 auto; /* Added */\n        float: none; /* Added */\n        margin-bottom: 5px; /* Added */\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo {\r\n  height: 80px;\r\n  width: 100px;\n}\n.card {\r\n  margin: 0 auto; /* Added */\r\n  float: none; /* Added */\r\n  margin-bottom: 5px; /* Added */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8384,7 +9432,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8408,7 +9456,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8432,7 +9480,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo{\n    height: 80px;\n    width: 100px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo {\r\n  height: 80px;\r\n  width: 100px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8456,7 +9504,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8480,7 +9528,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8504,7 +9552,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo{\n    height: 80px;\n    width: 100px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo {\r\n  height: 80px;\r\n  width: 100px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8528,7 +9576,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\n#em_photo{\r\n  height: 80px;\r\n  width: 80px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\n#em_photo {\r\n  height: 80px;\r\n  width: 80px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8552,7 +9600,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\n.card_center {\r\n        margin: 0 auto; /* Added */\r\n        float: none; /* Added */\r\n        margin-bottom: 5px; /* Added */\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\n.card_center {\r\n  margin: 0 auto; /* Added */\r\n  float: none; /* Added */\r\n  margin-bottom: 5px; /* Added */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8576,7 +9624,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8600,7 +9648,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\n#em_photo{\r\n  height: 80px;\r\n  width: 80px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\n#em_photo {\r\n  height: 80px;\r\n  width: 80px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8624,7 +9672,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8672,7 +9720,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo{\n   height: 100px;\n  width: 90px;\n}\n.card {\n        margin: 0 auto; /* Added */\n        float: none; /* Added */\n        margin-bottom: 5px; /* Added */\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo {\r\n  height: 100px;\r\n  width: 90px;\n}\n.card {\r\n  margin: 0 auto; /* Added */\r\n  float: none; /* Added */\r\n  margin-bottom: 5px; /* Added */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8696,7 +9744,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\n.card {\r\n        margin: 0 auto; /* Added */\r\n        float: none; /* Added */\r\n        margin-bottom: 5px; /* Added */\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\n.card {\r\n  margin: 0 auto; /* Added */\r\n  float: none; /* Added */\r\n  margin-bottom: 5px; /* Added */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8720,7 +9768,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\n.card {\r\n        margin: 0 auto; /* Added */\r\n        float: none; /* Added */\r\n        margin-bottom: 5px; /* Added */\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\n.card {\r\n  margin: 0 auto; /* Added */\r\n  float: none; /* Added */\r\n  margin-bottom: 5px; /* Added */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8744,7 +9792,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\n.card {\r\n        margin: 0 auto; /* Added */\r\n        float: none; /* Added */\r\n        margin-bottom: 5px; /* Added */\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\n.card {\r\n  margin: 0 auto; /* Added */\r\n  float: none; /* Added */\r\n  margin-bottom: 5px; /* Added */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8768,7 +9816,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo{\n    height: 80px;\n    width: 100px;\n}\n.card {\n        margin: 0 auto; /* Added */\n        float: none; /* Added */\n        margin-bottom: 5px; /* Added */\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo {\r\n  height: 80px;\r\n  width: 100px;\n}\n.card {\r\n  margin: 0 auto; /* Added */\r\n  float: none; /* Added */\r\n  margin-bottom: 5px; /* Added */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8792,7 +9840,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo{\n    height: 80px;\n    width: 100px;\n}\n.card {\n        margin: 0 auto; /* Added */\n        float: none; /* Added */\n        margin-bottom: 5px; /* Added */\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo {\r\n  height: 80px;\r\n  width: 100px;\n}\n.card {\r\n  margin: 0 auto; /* Added */\r\n  float: none; /* Added */\r\n  margin-bottom: 5px; /* Added */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8816,7 +9864,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\n#em_photo{\r\n  height: 80px;\r\n  width: 80px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\n#em_photo {\r\n  height: 80px;\r\n  width: 80px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8840,7 +9888,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo{\n    height: 80px;\n    width: 100px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo {\r\n  height: 80px;\r\n  width: 100px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8864,7 +9912,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8888,7 +9936,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8912,7 +9960,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8936,7 +9984,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo{\n    height: 80px;\n    width: 100px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#e_photo {\r\n  height: 80px;\r\n  width: 100px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8960,7 +10008,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8984,7 +10032,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new{\r\n\tfloat: right;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#add_new {\r\n  float: right;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9008,7 +10056,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#s_photo{\n    height: 80px;\n    width: 100px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#s_photo {\r\n  height: 80px;\r\n  width: 100px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38418,7 +39466,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -38428,7 +39476,7 @@ var render = function () {
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Category")]),
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: " container" }, [
+    _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "card col-lg-8 card_center" }, [
           _c(
@@ -38436,14 +39484,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n            Category Insert \n            "),
+              _vm._v("\n          Category Insert\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/viewAllCategory", id: "add_new" },
+                  attrs: { to: { name: "viewAllCategory" }, id: "add_new" },
                 },
-                [_vm._v(" All Category")]
+                [_vm._v("\n            All Category")]
               ),
             ],
             1
@@ -38511,8 +39559,8 @@ var render = function () {
             ),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-footer small  text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+          _c("div", { staticClass: "card-footer small text-muted" }, [
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -38531,7 +39579,7 @@ var staticRenderFns = [
           staticClass: "btn btn-success card_center",
           attrs: { type: "submit" },
         },
-        [_vm._v("Submit")]
+        [_vm._v("\n                Submit\n              ")]
       ),
     ])
   },
@@ -38564,7 +39612,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -38574,7 +39622,7 @@ var render = function () {
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Category")]),
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: " container" }, [
+    _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "card col-lg-8 card_center" }, [
           _c(
@@ -38582,14 +39630,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n            Category Update \n            "),
+              _vm._v("\n          Category Update\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/viewAllCategory", id: "add_new" },
+                  attrs: { to: { name: "viewAllCategory" }, id: "add_new" },
                 },
-                [_vm._v(" All Category")]
+                [_vm._v("\n            All Category")]
               ),
             ],
             1
@@ -38657,8 +39705,8 @@ var render = function () {
             ),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-footer small  text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+          _c("div", { staticClass: "card-footer small text-muted" }, [
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -38677,7 +39725,7 @@ var staticRenderFns = [
           staticClass: "btn btn-success card_center",
           attrs: { type: "submit" },
         },
-        [_vm._v("Update")]
+        [_vm._v("\n                Update\n              ")]
       ),
     ])
   },
@@ -38710,7 +39758,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -38718,7 +39766,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [
-        _vm._v(" All Category"),
+        _vm._v("All Category"),
       ]),
     ]),
     _vm._v(" "),
@@ -38730,14 +39778,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n         All Employee \n         "),
+              _vm._v("\n          All Employee\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/addCategory", id: "add_new" },
+                  attrs: { to: { name: "addCategory" }, id: "add_new" },
                 },
-                [_vm._v(" Add Category")]
+                [_vm._v("\n            Add Category")]
               ),
             ],
             1
@@ -38775,7 +39823,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" Edit")]
+                                [_vm._v("\n                        Edit")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -38788,7 +39836,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" Delete")]
+                                [_vm._v("\n                        Delete")]
                               ),
                             ],
                             1
@@ -38804,7 +39852,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -38853,7 +39901,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -38863,7 +39911,7 @@ var render = function () {
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Customer")]),
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: " container" }, [
+    _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "card col-lg-12" }, [
           _c(
@@ -38871,14 +39919,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n            Customer Insert \n            "),
+              _vm._v("\n          Customer Insert\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/viewAllCustomer", id: "add_new" },
+                  attrs: { to: { name: "viewAllCustomer" }, id: "add_new" },
                 },
-                [_vm._v(" All Customer")]
+                [_vm._v("\n            All Customer")]
               ),
             ],
             1
@@ -39086,7 +40134,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -39122,7 +40170,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -39132,7 +40180,7 @@ var render = function () {
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Customer")]),
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: " container" }, [
+    _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "card col-lg-12" }, [
           _c(
@@ -39140,14 +40188,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n            Customer Update \n            "),
+              _vm._v("\n          Customer Update\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/viewAllCustomer", id: "add_new" },
+                  attrs: { to: { name: "viewAllCustomer" }, id: "add_new" },
                 },
-                [_vm._v(" All Customer")]
+                [_vm._v("\n            All Customer")]
               ),
             ],
             1
@@ -39360,7 +40408,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -39396,7 +40444,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -39414,14 +40462,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n         All Customer \n         "),
+              _vm._v("\n          All Customer\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/addCustomer", id: "add_new" },
+                  attrs: { to: { name: "addCustomer" }, id: "add_new" },
                 },
-                [_vm._v(" Add Customer")]
+                [_vm._v("\n            Add Customer")]
               ),
             ],
             1
@@ -39471,7 +40519,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" Edit")]
+                                [_vm._v("\n                        Edit")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -39484,7 +40532,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" Delete")]
+                                [_vm._v("\n                        Delete")]
                               ),
                             ],
                             1
@@ -39500,7 +40548,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -39557,7 +40605,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -39567,7 +40615,7 @@ var render = function () {
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Employee")]),
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: " container" }, [
+    _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "card col-lg-12" }, [
           _c(
@@ -39575,14 +40623,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n            Employee Insert \n            "),
+              _vm._v("\n          Employee Insert\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/viewAllEmployee", id: "add_new" },
+                  attrs: { to: { name: "viewAllEmployee" }, id: "add_new" },
                 },
-                [_vm._v(" All Employee")]
+                [_vm._v("\n            All Employee")]
               ),
             ],
             1
@@ -39910,7 +40958,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -39946,7 +40994,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -39956,7 +41004,7 @@ var render = function () {
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Employee")]),
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: " container" }, [
+    _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "card col-lg-12" }, [
           _c(
@@ -39964,14 +41012,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n            Employee Update \n            "),
+              _vm._v("\n          Employee Update\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/viewAllEmployee", id: "add_new" },
+                  attrs: { to: { name: "viewAllEmployee" }, id: "add_new" },
                 },
-                [_vm._v(" All Employees")]
+                [_vm._v("\n            All Employees")]
               ),
             ],
             1
@@ -40304,7 +41352,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -40340,7 +41388,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -40348,7 +41396,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [
-        _vm._v(" All Employee"),
+        _vm._v("All Employee"),
       ]),
     ]),
     _vm._v(" "),
@@ -40360,14 +41408,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n         All Employee \n         "),
+              _vm._v("\n          All Employee\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/addEmployee", id: "add_new" },
+                  attrs: { to: { name: "addEmployee" }, id: "add_new" },
                 },
-                [_vm._v(" Add Employee")]
+                [_vm._v("\n            Add Employee")]
               ),
             ],
             1
@@ -40417,7 +41465,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" Edit")]
+                                [_vm._v("\n                        Edit")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -40426,7 +41474,7 @@ var render = function () {
                                   staticClass: "btn btn-warning btn-sm",
                                   attrs: { to: "/view" },
                                 },
-                                [_vm._v(" View")]
+                                [_vm._v("\n                        View")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -40439,7 +41487,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" Delete")]
+                                [_vm._v("\n                        Delete")]
                               ),
                             ],
                             1
@@ -40455,7 +41503,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -40512,7 +41560,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -40520,7 +41568,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [
-        _vm._v(" All Expense"),
+        _vm._v("All Expense"),
       ]),
     ]),
     _vm._v(" "),
@@ -40532,14 +41580,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\r\n            All Products \r\n            "),
+              _vm._v("\n          All Products\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/addExpense", id: "add_new" },
+                  attrs: { to: { name: "addExpense" }, id: "add_new" },
                 },
-                [_vm._v(" Add Expense")]
+                [_vm._v("\n            Add Expense")]
               ),
             ],
             1
@@ -40610,7 +41658,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -40663,7 +41711,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -40674,20 +41722,20 @@ var render = function () {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row container" }, [
-      _c("div", { staticClass: "card  col-lg-12 card_center" }, [
+      _c("div", { staticClass: "card col-lg-12 card_center" }, [
         _c(
           "div",
           { staticClass: "card-header" },
           [
             _c("i", { staticClass: "fas fa-chart-area" }),
-            _vm._v("\n            Expense Insert \n            "),
+            _vm._v("\n        Expense Insert\n        "),
             _c(
               "router-link",
               {
                 staticClass: "btn btn-sm btn-info",
-                attrs: { to: "/TodayExpense", id: "add_new" },
+                attrs: { to: { name: "TodayExpense" }, id: "add_new" },
               },
-              [_vm._v(" All Expense")]
+              [_vm._v("\n          All Expense")]
             ),
           ],
           1
@@ -40794,7 +41842,7 @@ var render = function () {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-footer small text-muted" }, [
-        _vm._v("Updated yesterday at 11:59 PM"),
+        _vm._v("\n      Updated yesterday at 11:59 PM\n    "),
       ]),
     ]),
   ])
@@ -40828,7 +41876,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -40838,7 +41886,7 @@ var render = function () {
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Expense")]),
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: " container" }, [
+    _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "card col-lg-12" }, [
           _c(
@@ -40846,14 +41894,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n            Expense Update \n            "),
+              _vm._v("\n          Expense Update\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/TodayExpense", id: "add_new" },
+                  attrs: { to: { name: "TodayExpense" }, id: "add_new" },
                 },
-                [_vm._v(" All Expense")]
+                [_vm._v("\n            All Expense")]
               ),
             ],
             1
@@ -40973,7 +42021,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -41004,7 +42052,20 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("ol", { staticClass: "breadcrumb" }, [
+      _c(
+        "li",
+        { staticClass: "breadcrumb-item" },
+        [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
+            _vm._v(" Dashboard"),
+          ]),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Overview")]),
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-xl-3 col-sm-6 mb-3" }, [
@@ -41013,7 +42074,7 @@ var render = function () {
           { staticClass: "card text-white bg-primary o-hidden h-100" },
           [
             _c("div", { staticClass: "card-body" }, [
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
               _vm.form.todaySell
                 ? _c("div", { staticClass: "mr-5" }, [
@@ -41026,7 +42087,7 @@ var render = function () {
                 : _vm._e(),
             ]),
             _vm._v(" "),
-            _vm._m(2),
+            _vm._m(1),
           ]
         ),
       ]),
@@ -41037,7 +42098,7 @@ var render = function () {
           { staticClass: "card text-white bg-warning o-hidden h-100" },
           [
             _c("div", { staticClass: "card-body" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _vm.form.income
                 ? _c("div", { staticClass: "mr-5" }, [
@@ -41046,7 +42107,7 @@ var render = function () {
                 : _vm._e(),
             ]),
             _vm._v(" "),
-            _vm._m(4),
+            _vm._m(3),
           ]
         ),
       ]),
@@ -41057,7 +42118,7 @@ var render = function () {
           { staticClass: "card text-white bg-success o-hidden h-100" },
           [
             _c("div", { staticClass: "card-body" }, [
-              _vm._m(5),
+              _vm._m(4),
               _vm._v(" "),
               _vm.form.due
                 ? _c("div", { staticClass: "mr-5" }, [
@@ -41066,7 +42127,7 @@ var render = function () {
                 : _vm._e(),
             ]),
             _vm._v(" "),
-            _vm._m(6),
+            _vm._m(5),
           ]
         ),
       ]),
@@ -41074,7 +42135,7 @@ var render = function () {
       _c("div", { staticClass: "col-xl-3 col-sm-6 mb-3" }, [
         _c("div", { staticClass: "card text-white bg-danger o-hidden h-100" }, [
           _c("div", { staticClass: "card-body" }, [
-            _vm._m(7),
+            _vm._m(6),
             _vm._v(" "),
             _vm.form.expense
               ? _c("div", { staticClass: "mr-5" }, [
@@ -41083,13 +42144,13 @@ var render = function () {
               : _vm._e(),
           ]),
           _vm._v(" "),
-          _vm._m(8),
+          _vm._m(7),
         ]),
       ]),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card mb-3" }, [
-      _vm._m(9),
+      _vm._m(8),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c("div", { staticClass: "table-responsive" }, [
@@ -41100,7 +42161,7 @@ var render = function () {
               attrs: { id: "dataTable", width: "100%", cellspacing: "0" },
             },
             [
-              _vm._m(10),
+              _vm._m(9),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -41173,18 +42234,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ol", { staticClass: "breadcrumb" }, [
-      _c("li", { staticClass: "breadcrumb-item" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Dashboard")]),
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Overview")]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -41361,7 +42410,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [
-        _vm._v(" Today Order Table"),
+        _vm._v("Today Order Table"),
       ]),
     ]),
     _vm._v(" "),
@@ -41426,7 +42475,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -41440,7 +42489,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("i", { staticClass: "fas fa-chart-area" }),
-      _vm._v("\r\n           Order Table\r\n          "),
+      _vm._v("\n          Order Table\n        "),
     ])
   },
   function () {
@@ -41487,7 +42536,22 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("ol", { staticClass: "breadcrumb" }, [
+      _c(
+        "li",
+        { staticClass: "breadcrumb-item" },
+        [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
+            _vm._v(" Dashboard"),
+          ]),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("li", { staticClass: "breadcrumb-item active" }, [
+        _vm._v("Search Order"),
+      ]),
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row container" }, [
       _c("div", { staticClass: "card col-lg-12" }, [
@@ -41496,14 +42560,14 @@ var render = function () {
           { staticClass: "card-header" },
           [
             _c("i", { staticClass: "fas fa-chart-area" }),
-            _vm._v("\n            Search Orders \n            "),
+            _vm._v("\n        Search Orders\n        "),
             _c(
               "router-link",
               {
                 staticClass: "btn btn-sm btn-info",
                 attrs: { to: { name: "orders" }, id: "add_new" },
               },
-              [_vm._v(" Today Order")]
+              [_vm._v("\n          Today Order")]
             ),
           ],
           1
@@ -41556,6 +42620,7 @@ var render = function () {
                           }),
                         ]),
                       ]),
+                      _vm._v(" "),
                       _c("br"),
                       _vm._v(" "),
                       _c(
@@ -41564,7 +42629,11 @@ var render = function () {
                           staticClass: "btn btn-success",
                           attrs: { type: "submit" },
                         },
-                        [_vm._v("Search")]
+                        [
+                          _vm._v(
+                            "\n                    Search\n                  "
+                          ),
+                        ]
                       ),
                     ]),
                   ]),
@@ -41682,6 +42751,7 @@ var render = function () {
                           ),
                         ]),
                       ]),
+                      _vm._v(" "),
                       _c("br"),
                       _vm._v(" "),
                       _c(
@@ -41690,7 +42760,11 @@ var render = function () {
                           staticClass: "btn btn-success",
                           attrs: { type: "submit" },
                         },
-                        [_vm._v("Search")]
+                        [
+                          _vm._v(
+                            "\n                    Search\n                  "
+                          ),
+                        ]
                       ),
                     ]),
                   ]),
@@ -41702,7 +42776,7 @@ var render = function () {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-footer small text-muted" }, [
-        _vm._v("Updated yesterday at 11:59 PM"),
+        _vm._v("\n      Updated yesterday at 11:59 PM\n    "),
       ]),
     ]),
     _vm._v(" "),
@@ -41710,7 +42784,7 @@ var render = function () {
     _vm._v(" "),
     _c("div", { staticClass: "row container" }, [
       _c("div", { staticClass: "card col-lg-12" }, [
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("div", { staticClass: "row" }, [
@@ -41726,7 +42800,7 @@ var render = function () {
                   attrs: { id: "", width: "100%", cellspacing: "0" },
                 },
                 [
-                  _vm._m(2),
+                  _vm._m(1),
                   _vm._v(" "),
                   Object.keys(_vm.orders).length
                     ? _c(
@@ -41735,7 +42809,11 @@ var render = function () {
                           return _c("tr", { key: order.id }, [
                             _c("td", [_vm._v(_vm._s(order.customer.name))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(_vm.CustomerName))]),
+                            _c("td", [
+                              _vm._v(
+                                _vm._s(order.order_details.product.product_name)
+                              ),
+                            ]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(order.qty))]),
                             _vm._v(" "),
@@ -41760,7 +42838,7 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-footer small text-muted" }, [
-          _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
+          _vm._v("\n        Updated yesterday at 11:59 PM\n      "),
         ]),
       ]),
     ]),
@@ -41771,23 +42849,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ol", { staticClass: "breadcrumb" }, [
-      _c("li", { staticClass: "breadcrumb-item" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Dashboard")]),
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "breadcrumb-item active" }, [
-        _vm._v("Search Order"),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("i", { staticClass: "fas fa-chart-area" }),
-      _vm._v("\n          Order Details\n        "),
+      _vm._v("\n        Order Details\n      "),
     ])
   },
   function () {
@@ -42096,7 +43160,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [
-        _vm._v(" Point of sale"),
+        _vm._v("Point of sale"),
       ]),
     ]),
     _vm._v(" "),
@@ -42135,7 +43199,11 @@ var render = function () {
                                 },
                               },
                             },
-                            [_vm._v("+")]
+                            [
+                              _vm._v(
+                                "\n                        +\n                      "
+                              ),
+                            ]
                           ),
                           _vm._v(" "),
                           card.pro_quantity >= 2
@@ -42150,7 +43218,11 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v("-")]
+                                [
+                                  _vm._v(
+                                    "\n                        -\n                      "
+                                  ),
+                                ]
                               )
                             : _c(
                                 "button",
@@ -42158,13 +43230,21 @@ var render = function () {
                                   staticClass: "btn btn-sm btn-danger",
                                   attrs: { disabled: "" },
                                 },
-                                [_vm._v("-")]
+                                [
+                                  _vm._v(
+                                    "\n                        -\n                      "
+                                  ),
+                                ]
                               ),
                         ]),
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(card.product_price))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(card.sub_total))]),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(card.product_price * card.pro_quantity)
+                          ),
+                        ]),
                         _vm._v(" "),
                         _c("td", [
                           _c(
@@ -42195,11 +43275,11 @@ var render = function () {
                     "li",
                     {
                       staticClass:
-                        "list-group-item d-flex justify-content-between align-items-center",
+                        "\n                    list-group-item\n                    d-flex\n                    justify-content-between\n                    align-items-center\n                  ",
                     },
                     [
                       _vm._v(
-                        "\n                      Total Quantity:\n                       "
+                        "\n                  Total Quantity:\n                  "
                       ),
                       _c("strong", [_vm._v(_vm._s(_vm.qty))]),
                     ]
@@ -42209,11 +43289,11 @@ var render = function () {
                     "li",
                     {
                       staticClass:
-                        "list-group-item d-flex justify-content-between align-items-center",
+                        "\n                    list-group-item\n                    d-flex\n                    justify-content-between\n                    align-items-center\n                  ",
                     },
                     [
                       _vm._v(
-                        "\n                      Sub Total:\n                       "
+                        "\n                  Sub Total:\n                  "
                       ),
                       _c("strong", [_vm._v(_vm._s(_vm.subtotal) + " Tk")]),
                     ]
@@ -42223,12 +43303,10 @@ var render = function () {
                     "li",
                     {
                       staticClass:
-                        "list-group-item d-flex justify-content-between align-items-center",
+                        "\n                    list-group-item\n                    d-flex\n                    justify-content-between\n                    align-items-center\n                  ",
                     },
                     [
-                      _vm._v(
-                        "\n                       Vat:\n                      "
-                      ),
+                      _vm._v("\n                  Vat:\n                  "),
                       _c("strong", [
                         _vm._v(" " + _vm._s(_vm.vats.vat) + " % "),
                       ]),
@@ -42239,12 +43317,10 @@ var render = function () {
                     "li",
                     {
                       staticClass:
-                        "list-group-item d-flex justify-content-between align-items-center",
+                        "\n                    list-group-item\n                    d-flex\n                    justify-content-between\n                    align-items-center\n                  ",
                     },
                     [
-                      _vm._v(
-                        "\n                       Total:\n                      "
-                      ),
+                      _vm._v("\n                  Total:\n                  "),
                       _c("strong", [_vm._v(" " + _vm._s(_vm.total) + " Tk")]),
                     ]
                   ),
@@ -42300,7 +43376,13 @@ var render = function () {
                             key: customer.id,
                             domProps: { value: customer.id },
                           },
-                          [_vm._v(_vm._s(customer.name))]
+                          [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(customer.name) +
+                                "\n                  "
+                            ),
+                          ]
                         )
                       }),
                       0
@@ -42712,7 +43794,11 @@ var render = function () {
                                     staticClass: "btn btn-success",
                                     attrs: { type: "submit" },
                                   },
-                                  [_vm._v("Submit")]
+                                  [
+                                    _vm._v(
+                                      "\n                          Submit\n                        "
+                                    ),
+                                  ]
                                 ),
                               ]
                             ),
@@ -42733,6 +43819,7 @@ var render = function () {
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "card col-lg-12" }, [
               _vm._m(3),
+              _vm._v(" "),
               _c("br"),
               _vm._v(" "),
               _c(
@@ -42867,10 +43954,15 @@ var render = function () {
                                                 { staticClass: "card-title" },
                                                 [
                                                   _vm._v(
-                                                    _vm._s(product.product_name)
+                                                    "\n                                " +
+                                                      _vm._s(
+                                                        product.product_name
+                                                      ) +
+                                                      "\n                              "
                                                   ),
                                                 ]
                                               ),
+                                              _vm._v(" "),
                                               _c("br"),
                                               _vm._v(" "),
                                               product.product_quantity >= 10
@@ -42898,7 +43990,7 @@ var render = function () {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "Stock Low " +
+                                                        "Stock Low\n                                " +
                                                           _vm._s(
                                                             product.product_quantity
                                                           )
@@ -42913,7 +44005,7 @@ var render = function () {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "Stock Out " +
+                                                        "Stock Out\n                                " +
                                                           _vm._s(
                                                             product.product_quantity
                                                           )
@@ -43032,11 +44124,11 @@ var render = function () {
                                               },
                                               [
                                                 _vm._v(
-                                                  " Availble (" +
+                                                  "\n                            Availble (" +
                                                     _vm._s(
                                                       getproduct.product_quantity
                                                     ) +
-                                                    ") "
+                                                    ")\n                          "
                                                 ),
                                               ]
                                             )
@@ -43076,7 +44168,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("i", { staticClass: "fas fa-chart-area" }),
-      _vm._v("\n         Expense Insert \n         "),
+      _vm._v("\n              Expense Insert\n              "),
       _c(
         "a",
         {
@@ -43087,7 +44179,7 @@ var staticRenderFns = [
             id: "add_new",
           },
         },
-        [_vm._v(" Add Customer")]
+        [_vm._v("\n                Add Customer")]
       ),
     ])
   },
@@ -43117,7 +44209,11 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("New Customer")]
+        [
+          _vm._v(
+            "\n                        New Customer\n                      "
+          ),
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -43141,7 +44237,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("i", { staticClass: "fas fa-chart-area" }),
-      _vm._v("\n         Products \n       "),
+      _vm._v("\n              Products\n            "),
     ])
   },
   function () {
@@ -43212,14 +44308,14 @@ var render = function () {
           { staticClass: "card-header" },
           [
             _c("i", { staticClass: "fas fa-chart-area" }),
-            _vm._v("\n            Product Insert \n            "),
+            _vm._v("\n        Product Insert\n        "),
             _c(
               "router-link",
               {
                 staticClass: "btn btn-sm btn-info",
-                attrs: { to: "/product", id: "add_new" },
+                attrs: { to: { name: "product" }, id: "add_new" },
               },
-              [_vm._v(" All Product")]
+              [_vm._v("\n          All Product")]
             ),
           ],
           1
@@ -43377,7 +44473,13 @@ var render = function () {
                                 key: category.id,
                                 domProps: { value: category.id },
                               },
-                              [_vm._v(_vm._s(category.category_name))]
+                              [
+                                _vm._v(
+                                  "\n                      " +
+                                    _vm._s(category.category_name) +
+                                    "\n                    "
+                                ),
+                              ]
                             )
                           }),
                         ],
@@ -43445,7 +44547,13 @@ var render = function () {
                                 key: supplier.id,
                                 domProps: { value: supplier.id },
                               },
-                              [_vm._v(_vm._s(supplier.name))]
+                              [
+                                _vm._v(
+                                  "\n                      " +
+                                    _vm._s(supplier.name) +
+                                    "\n                    "
+                                ),
+                              ]
                             )
                           }),
                         ],
@@ -43461,6 +44569,7 @@ var render = function () {
                   ]),
                 ]),
               ]),
+              _vm._v(" "),
               _c("br"),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
@@ -43586,6 +44695,7 @@ var render = function () {
                   ]),
                 ]),
               ]),
+              _vm._v(" "),
               _c("br"),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
@@ -43659,7 +44769,7 @@ var render = function () {
                       }),
                       _vm._v(" "),
                       _c("label", { attrs: { for: "phone" } }, [
-                        _vm._v("Quantity  "),
+                        _vm._v("Quantity "),
                       ]),
                       _vm._v(" "),
                       _vm.errors.product_quantity
@@ -43671,6 +44781,7 @@ var render = function () {
                   ]),
                 ]),
               ]),
+              _vm._v(" "),
               _c("br"),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
@@ -43710,7 +44821,7 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-footer small text-muted" }, [
-          _vm._v("Updated yesterday at 11:59 PM"),
+          _vm._v("\n        Updated yesterday at 11:59 PM\n      "),
         ]),
       ]),
     ]),
@@ -43745,7 +44856,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -43762,14 +44873,14 @@ var render = function () {
           { staticClass: "card-header" },
           [
             _c("i", { staticClass: "fas fa-chart-area" }),
-            _vm._v("\n            Product Update \n            "),
+            _vm._v("\n        Product Update\n        "),
             _c(
               "router-link",
               {
                 staticClass: "btn btn-sm btn-info",
-                attrs: { to: "/product", id: "add_new" },
+                attrs: { to: { name: "product" }, id: "add_new" },
               },
-              [_vm._v(" All Product")]
+              [_vm._v("\n          All Product")]
             ),
           ],
           1
@@ -43927,7 +45038,13 @@ var render = function () {
                                 key: category.id,
                                 domProps: { value: category.id },
                               },
-                              [_vm._v(_vm._s(category.category_name))]
+                              [
+                                _vm._v(
+                                  "\n                      " +
+                                    _vm._s(category.category_name) +
+                                    "\n                    "
+                                ),
+                              ]
                             )
                           }),
                         ],
@@ -43995,7 +45112,13 @@ var render = function () {
                                 key: supplier.id,
                                 domProps: { value: supplier.id },
                               },
-                              [_vm._v(_vm._s(supplier.name))]
+                              [
+                                _vm._v(
+                                  "\n                      " +
+                                    _vm._s(supplier.name) +
+                                    "\n                    "
+                                ),
+                              ]
                             )
                           }),
                         ],
@@ -44011,6 +45134,7 @@ var render = function () {
                   ]),
                 ]),
               ]),
+              _vm._v(" "),
               _c("br"),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
@@ -44136,6 +45260,7 @@ var render = function () {
                   ]),
                 ]),
               ]),
+              _vm._v(" "),
               _c("br"),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
@@ -44209,7 +45334,7 @@ var render = function () {
                       }),
                       _vm._v(" "),
                       _c("label", { attrs: { for: "phone" } }, [
-                        _vm._v("Quantity  "),
+                        _vm._v("Quantity "),
                       ]),
                       _vm._v(" "),
                       _vm.errors.product_quantity
@@ -44221,6 +45346,7 @@ var render = function () {
                   ]),
                 ]),
               ]),
+              _vm._v(" "),
               _c("br"),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
@@ -44265,7 +45391,7 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-footer small text-muted" }, [
-          _vm._v("Updated yesterday at 11:59 PM"),
+          _vm._v("\n        Updated yesterday at 11:59 PM\n      "),
         ]),
       ]),
     ]),
@@ -44300,7 +45426,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -44317,14 +45443,14 @@ var render = function () {
           { staticClass: "card-header" },
           [
             _c("i", { staticClass: "fas fa-chart-area" }),
-            _vm._v("\n            Stock Quantity Update \n            "),
+            _vm._v("\n        Stock Quantity Update\n        "),
             _c(
               "router-link",
               {
                 staticClass: "btn btn-sm btn-info",
-                attrs: { to: "/stock", id: "add_new" },
+                attrs: { to: { name: "stock" }, id: "add_new" },
               },
-              [_vm._v(" All Stock")]
+              [_vm._v("\n          All Stock")]
             ),
           ],
           1
@@ -44423,7 +45549,7 @@ var render = function () {
                       }),
                       _vm._v(" "),
                       _c("label", { attrs: { for: "phone" } }, [
-                        _vm._v("Quantity  "),
+                        _vm._v("Quantity "),
                       ]),
                       _vm._v(" "),
                       _vm.errors.product_quantity
@@ -44435,6 +45561,7 @@ var render = function () {
                   ]),
                 ]),
               ]),
+              _vm._v(" "),
               _c("br"),
               _vm._v(" "),
               _c(
@@ -44447,7 +45574,7 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-footer small text-muted" }, [
-          _vm._v("Updated yesterday at 11:59 PM"),
+          _vm._v("\n        Updated yesterday at 11:59 PM\n      "),
         ]),
       ]),
     ]),
@@ -44482,16 +45609,14 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
         1
       ),
       _vm._v(" "),
-      _c("li", { staticClass: "breadcrumb-item active" }, [
-        _vm._v(" Products"),
-      ]),
+      _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Products")]),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
@@ -44569,7 +45694,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" Edit")]
+                                [_vm._v("\n                        Edit")]
                               ),
                             ],
                             1
@@ -44585,7 +45710,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -44599,7 +45724,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("i", { staticClass: "fas fa-chart-area" }),
-      _vm._v("\n         Stock Products \n       "),
+      _vm._v("\n          Stock Products\n        "),
     ])
   },
   function () {
@@ -44655,7 +45780,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -44663,7 +45788,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [
-        _vm._v(" All Products"),
+        _vm._v("All Products"),
       ]),
     ]),
     _vm._v(" "),
@@ -44675,14 +45800,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n         All Products \n         "),
+              _vm._v("\n          All Products\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/addProduct", id: "add_new" },
+                  attrs: { to: { name: "addProduct" }, id: "add_new" },
                 },
-                [_vm._v(" Add Product")]
+                [_vm._v("\n            Add Product")]
               ),
             ],
             1
@@ -44737,7 +45862,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" Edit")]
+                                [_vm._v("\n                        Edit")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -44746,7 +45871,7 @@ var render = function () {
                                   staticClass: "btn btn-warning btn-sm",
                                   attrs: { to: "#" },
                                 },
-                                [_vm._v(" View")]
+                                [_vm._v("\n                        View")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -44759,7 +45884,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" Delete")]
+                                [_vm._v("\n                        Delete")]
                               ),
                             ],
                             1
@@ -44775,7 +45900,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -44836,7 +45961,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -44854,14 +45979,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n         All Salaries \n         "),
+              _vm._v("\n          All Salaries\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/allSalary", id: "add_new" },
+                  attrs: { to: { name: "allSalary" }, id: "add_new" },
                 },
-                [_vm._v(" AllSalary")]
+                [_vm._v("\n            AllSalary")]
               ),
             ],
             1
@@ -44925,7 +46050,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -44980,7 +46105,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -44998,14 +46123,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n         All Salaries \n         "),
+              _vm._v("\n          All Salaries\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/addSalary", id: "add_new" },
+                  attrs: { to: { name: "addSalary" }, id: "add_new" },
                 },
-                [_vm._v(" Pay Salary")]
+                [_vm._v("\n            Pay Salary")]
               ),
             ],
             1
@@ -45045,7 +46170,11 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" View Salary")]
+                                [
+                                  _vm._v(
+                                    "\n                        View Salary"
+                                  ),
+                                ]
                               ),
                             ],
                             1
@@ -45061,7 +46190,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -45112,7 +46241,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -45129,14 +46258,14 @@ var render = function () {
           { staticClass: "card-header" },
           [
             _c("i", { staticClass: "fas fa-chart-area" }),
-            _vm._v("\n           Create Salary \n            "),
+            _vm._v("\n        Create Salary\n        "),
             _c(
               "router-link",
               {
                 staticClass: "btn btn-sm btn-info",
-                attrs: { to: "/addSalary", id: "add_new" },
+                attrs: { to: { name: "addSalary" }, id: "add_new" },
               },
-              [_vm._v(" Pay Salary")]
+              [_vm._v("\n          Pay Salary")]
             ),
           ],
           1
@@ -45374,7 +46503,7 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-footer small text-muted" }, [
-          _vm._v("Updated yesterday at 11:59 PM"),
+          _vm._v("\n        Updated yesterday at 11:59 PM\n      "),
         ]),
       ]),
     ]),
@@ -45409,7 +46538,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -45676,7 +46805,7 @@ var render = function () {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-footer small text-muted" }, [
-          _vm._v("Updated yesterday at 11:59 PM"),
+          _vm._v("\n        Updated yesterday at 11:59 PM\n      "),
         ]),
       ]),
     ]),
@@ -45689,7 +46818,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("i", { staticClass: "fas fa-chart-area" }),
-      _vm._v("\n            Salary Update \n           \n          "),
+      _vm._v("\n        Salary Update\n      "),
     ])
   },
 ]
@@ -45721,14 +46850,14 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
         1
       ),
       _vm._v(" "),
-      _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v(" Salary")]),
+      _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Salary")]),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
@@ -45739,14 +46868,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n       Employee Salary Details\n         "),
+              _vm._v("\n          Employee Salary Details\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/allSalary", id: "add_new" },
+                  attrs: { to: { name: "allSalary" }, id: "add_new" },
                 },
-                [_vm._v(" All Salary")]
+                [_vm._v("\n            All Salary")]
               ),
             ],
             1
@@ -45806,7 +46935,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -45861,7 +46990,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -45871,7 +47000,7 @@ var render = function () {
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Supplier")]),
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: " container" }, [
+    _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "card col-lg-12" }, [
           _c(
@@ -45879,14 +47008,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n            Supplier Insert \n            "),
+              _vm._v("\n          Supplier Insert\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/viewAllSupplier", id: "add_new" },
+                  attrs: { to: { name: "viewAllSupplier" }, id: "add_new" },
                 },
-                [_vm._v(" All Supplier")]
+                [_vm._v("\n            All Supplier")]
               ),
             ],
             1
@@ -46143,7 +47272,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -46179,7 +47308,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -46189,7 +47318,7 @@ var render = function () {
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Supplier")]),
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: " container" }, [
+    _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "card col-lg-12" }, [
           _c(
@@ -46197,14 +47326,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n            Supplier Update \n            "),
+              _vm._v("\n          Supplier Update\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/viewAllSupplier", id: "add_new" },
+                  attrs: { to: { name: "viewAllSupplier" }, id: "add_new" },
                 },
-                [_vm._v(" All Suppliers")]
+                [_vm._v("\n            All Suppliers")]
               ),
             ],
             1
@@ -46461,7 +47590,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),
@@ -46497,7 +47626,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: "/home", id: "home" } }, [
+          _c("router-link", { attrs: { to: { name: "home" }, id: "home" } }, [
             _vm._v(" Dashboard"),
           ]),
         ],
@@ -46505,7 +47634,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [
-        _vm._v(" All Suppliers"),
+        _vm._v("All Suppliers"),
       ]),
     ]),
     _vm._v(" "),
@@ -46517,14 +47646,14 @@ var render = function () {
             { staticClass: "card-header" },
             [
               _c("i", { staticClass: "fas fa-chart-area" }),
-              _vm._v("\n         All Employee \n         "),
+              _vm._v("\n          All Employee\n          "),
               _c(
                 "router-link",
                 {
                   staticClass: "btn btn-sm btn-info",
-                  attrs: { to: "/addSupplier", id: "add_new" },
+                  attrs: { to: { name: "addSupplier" }, id: "add_new" },
                 },
-                [_vm._v(" Add Supplier")]
+                [_vm._v("\n            Add Supplier")]
               ),
             ],
             1
@@ -46574,7 +47703,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" Edit")]
+                                [_vm._v("\n                        Edit")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -46583,7 +47712,7 @@ var render = function () {
                                   staticClass: "btn btn-warning btn-sm",
                                   attrs: { to: "#" },
                                 },
-                                [_vm._v(" View")]
+                                [_vm._v("\n                        View")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -46596,7 +47725,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v(" Delete")]
+                                [_vm._v("\n                        Delete")]
                               ),
                             ],
                             1
@@ -46612,7 +47741,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-footer small text-muted" }, [
-            _vm._v("Updated yesterday at 11:59 PM"),
+            _vm._v("\n          Updated yesterday at 11:59 PM\n        "),
           ]),
         ]),
       ]),

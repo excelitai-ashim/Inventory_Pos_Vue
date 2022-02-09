@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\CategoryResources;
 use App\Models\Category;
+use App\Models\Product;
+
 use Image;
 
 class CategoryController extends Controller
@@ -57,5 +59,16 @@ class CategoryController extends Controller
     {
         Category::find($id)->delete();
 
+        $Products=Product::where('category_id',$id)->get();
+
+        foreach ($Products as $Product) {
+       
+            $Product->delete();
+            
+          }
+
+ 
+
+       
     }
 }

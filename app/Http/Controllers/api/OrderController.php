@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderDetails;
 use DateTime;
 
+
 class OrderController extends Controller
 {
     public function TodayOrder()
@@ -42,15 +43,22 @@ class OrderController extends Controller
 
     public function SearchOrderDate(Request $request){     
     	$orderdate=$request->date;
+        
         $newDate=new DateTime($orderdate);
         $done= $newDate->format('d/m/Y');
-        $orders=Order::with('customer','orderDetails')->where( 'order_date',$done)->get();
-
+       
+        $orders=Order::with('customer','orderDetails','orderDetails.product')->where( 'order_date',$done)->get();
+       
     	return response()->json($orders);
     }
 
     public function SearchMonth(request $request){
     	$month=$request->month;
-    	return response()->json($month);
+        $orders=Order::with('customer','orderDetails','orderDetails.product')->where( 'order_month',$month)->get();
+       
+    	return response()->json($orders);
+    
     }
 }
+
+
