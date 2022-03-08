@@ -5815,6 +5815,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     if (!User.loggedin()) {
@@ -5822,6 +5830,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         name: "/"
       });
     }
+
+    this.$refs.scannerName.focus();
   },
   created: function created() {
     var _this = this;
@@ -5830,7 +5840,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.allCategory();
     this.cartProduct();
     this.allCustomer();
-    this.cartProduct();
     this.vat();
     Reload.$on("AfterAdd", function () {
       _this.cartProduct();
@@ -5838,6 +5847,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
+      scannerValue: "",
       form: {
         details: "",
         amount: "",
@@ -5877,6 +5887,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return getproduct.product_name.match(_this3.getsearchTerm);
       });
     },
+    atPress: function atPress(e) {
+      if (e.keyCode === 13) {
+        alert('Enter was pressed');
+      } else if (e.keyCode === 50) {
+        alert('@ was pressed');
+      }
+
+      this.log += e.key;
+    },
     qty: function qty() {
       var sum = 0;
 
@@ -5905,6 +5924,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: (_methods = {
+    scannerSubmit: function scannerSubmit() {
+      this.AddToCart(this.scannerValue);
+      this.scannerValue = '';
+    },
     //cart methods here
     AddToCart: function AddToCart(id) {
       axios.get("/api/addTocart/" + id).then(function () {
@@ -6060,6 +6083,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     axios.post("/api/customer/", this.form).then(function () {
       $("#closeModal").click();
       Notification.success();
+
+      _this14.allCustomer();
+
       _this14.customers = _this14.customers.filter(function (customer) {
         return customer.id != id;
       });
@@ -43169,11 +43195,62 @@ var render = function () {
         _c("div", { staticClass: "row card container" }, [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "card col-lg-12" }, [
-              _vm._m(0),
+              _c("div", { staticClass: "card-header" }, [
+                _c("i", { staticClass: "fas fa-chart-area" }),
+                _vm._v("\n              Expense Insert\n\n              "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-sm btn-info",
+                    attrs: {
+                      "data-toggle": "modal",
+                      "data-target": "#exampleModal",
+                      id: "add_new",
+                    },
+                  },
+                  [_vm._v("\n                Add Customer")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.scannerValue,
+                      expression: "scannerValue",
+                    },
+                  ],
+                  ref: "scannerName",
+                  staticClass: "form-control m-input mt-3",
+                  attrs: {
+                    type: "text",
+                    "aria-describedby": "emailHelp",
+                    placeholder: "Scanner",
+                  },
+                  domProps: { value: _vm.scannerValue },
+                  on: {
+                    keyup: function ($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      return _vm.scannerSubmit.apply(null, arguments)
+                    },
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.scannerValue = $event.target.value
+                    },
+                  },
+                }),
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("table", { staticClass: "table table-sm table-striped" }, [
-                  _vm._m(1),
+                  _vm._m(0),
                   _vm._v(" "),
                   _c(
                     "tbody",
@@ -43501,7 +43578,7 @@ var render = function () {
                       },
                       [
                         _c("div", { staticClass: "modal-content" }, [
-                          _vm._m(2),
+                          _vm._m(1),
                           _vm._v(" "),
                           _c("div", { staticClass: "modal-body" }, [
                             _c(
@@ -43818,7 +43895,7 @@ var render = function () {
         _c("div", { staticClass: "row card container" }, [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "card col-lg-12" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
@@ -43829,7 +43906,7 @@ var render = function () {
                   attrs: { id: "pills-tab", role: "tablist" },
                 },
                 [
-                  _vm._m(4),
+                  _vm._m(3),
                   _vm._v(" "),
                   _vm._l(_vm.categories, function (category) {
                     return _c(
@@ -44162,27 +44239,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("i", { staticClass: "fas fa-chart-area" }),
-      _vm._v("\n              Expense Insert\n              "),
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-sm btn-info",
-          attrs: {
-            "data-toggle": "modal",
-            "data-target": "#exampleModal",
-            id: "add_new",
-          },
-        },
-        [_vm._v("\n                Add Customer")]
-      ),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

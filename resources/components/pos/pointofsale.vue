@@ -13,8 +13,11 @@
           <div class="row">
             <div class="card col-lg-12">
               <div class="card-header">
+
+                
                 <i class="fas fa-chart-area"></i>
                 Expense Insert
+
                 <a
                   class="btn btn-sm btn-info"
                   data-toggle="modal"
@@ -23,7 +26,12 @@
                 >
                   Add Customer</a
                 >
+       <input type="text"   class="form-control m-input mt-3" v-model="scannerValue" ref="scannerName" v-on:keyup.enter="scannerSubmit"  aria-describedby="emailHelp" placeholder="Scanner">   
+             
+
               </div>
+
+    
               <div class="card-body">
                 <table class="table table-sm table-striped">
                   <thead>
@@ -475,21 +483,23 @@ export default {
     if (!User.loggedin()) {
       this.$router.push({ name: "/" });
     }
+    this.$refs.scannerName.focus();
   },
   created() {
     this.allProduct();
     this.allCategory();
     this.cartProduct();
-
     this.allCustomer();
-    this.cartProduct();
     this.vat();
     Reload.$on("AfterAdd", () => {
       this.cartProduct();
+
     });
+     
   },
   data() {
     return {
+      scannerValue:"",
       form: {
         details: "",
         amount: "",
@@ -515,6 +525,7 @@ export default {
     };
   },
   computed: {
+    
     filtersearch() {
       return this.products.filter((product) => {
         return product.product_name.match(this.searchTerm);
@@ -525,6 +536,16 @@ export default {
         return getproduct.product_name.match(this.getsearchTerm);
       });
     },
+
+    atPress(e) {
+      if (e.keyCode === 13) {
+        alert('Enter was pressed');
+      } else if (e.keyCode === 50) {
+        alert('@ was pressed');
+      }      
+      this.log += e.key;
+    },
+
     qty() {
       let sum = 0;
       for (let i = 0; i < this.cards.length; i++) {
@@ -551,8 +572,14 @@ export default {
     getDue() {
       return (this.due = this.total - this.pay);
     },
+    
   },
   methods: {
+     scannerSubmit(){
+       this.AddToCart(this.scannerValue);
+       this.scannerValue='';
+     },
+  
     //cart methods here
     AddToCart(id) {
       axios
@@ -677,7 +704,9 @@ export default {
       axios
         .get("/api/customer/")
         .then(({ data }) => (this.customers = data))
+        
         .catch(console.log("error"));
+
     },
     subproduct(id) {
       axios
@@ -687,8 +716,11 @@ export default {
     },
     customerInsert() {
       axios.post("/api/customer/", this.form).then(() => {
+
         $("#closeModal").click();
         Notification.success();
+        this.allCustomer();
+
         this.customers = this.customers.filter((customer) => {
           return customer.id != id;
         });
